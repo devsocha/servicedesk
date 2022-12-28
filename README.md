@@ -3,12 +3,12 @@ Ticket application by DevSocha
 /* Start */
 1. Put files into server.
 2. Run cmd and in path application use command "php artisan migrate"
-3. Create super admin in db
+3. Create Head Technican in db users with role = 3
 
 /* How works */
-1. Super admin can create companys profile in special page /admin/dashboard
+1. Technican with role = 3 can create others
 2. You have 2 types of technican. Casual and Head.
-3. User has different view than techican.
+3. Users has different view than techicans.
 4. For create user you should do it in admin panel and send activation link.
 5. Technican has in home page private to do list.
 
