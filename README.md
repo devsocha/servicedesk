@@ -11,6 +11,7 @@ Ticket application by DevSocha
 3. Users has different view than techicans.
 4. For create user you should do it in admin panel and send activation link.
 5. Technican has in home page private to do list.
+6. Users can be from different companys
 
 
 /* What in future */
