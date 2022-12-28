@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\technican;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TechnicanController extends Controller
@@ -14,7 +15,10 @@ class TechnicanController extends Controller
         return view('admin.requests');
     }
     public function admin(){
-        return view('admin.settingsUsers');
+        $users = User::where('rola',1)->get();
+        return view('admin.settingsUsers')->with([
+            'users'=>$users,
+        ]);
     }
 
 }

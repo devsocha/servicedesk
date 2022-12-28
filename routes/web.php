@@ -2,16 +2,31 @@
 
 use Illuminate\Support\Facades\Route;
 
-/* Login & Register */
+/* Login */
+
+
 
 
 /* User */
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('options',[\App\Http\Controllers\technican\TechnicanController::class,'options'
 ])->name('options');
+Route::get('general/registration/{token}/{email}',[\App\Http\Controllers\user\CredentialController::class,'index'
+])->name('user.registration');
+Route::post('general/registration',[\App\Http\Controllers\user\CredentialController::class,'userRegistration'
+])->name('user.registrationSubmit');
+Route::get('general/user/delete/{id}',[\App\Http\Controllers\user\CredentialController::class,'delete'
+])->name('user.delete');
+
+/* Emails User */
+Route::post('registration/email/send',[\App\Http\Controllers\user\mails\RegisterMailController::class,'sender'
+])->name('registrationEmail');
+
+
+
+
 
 /* Technican */
 Route::get('home/technican',[\App\Http\Controllers\technican\TechnicanController::class,'index'
