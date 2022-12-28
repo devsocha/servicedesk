@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('nazwisko');
             $table->string('token')->nullable();
             $table->string('status')->default('Wysłane potwierdzenie');
-            $table->integer('rola');
+            $table->integer('rola')->default(1);
             $table->integer('id_firma');
             $table->integer('telefon')->nullable();
             $table->timestamps();

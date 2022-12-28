@@ -8,9 +8,10 @@
     @include('admin.layout.style')
 </head>
 <body >
+<div class="container-fluid">
+
     @include('admin.layout.nav')
     @yield('content')
-
-
+</div>
 </body>
 </html>

@@ -1,14 +1,39 @@
 @extends('admin.layout.app')
 @section('tittle','Strona główna')
 @section('content')
-    <div class="row">
-        <div class="col">
-            1 of 3
+    <div class="row ">
+        <div class="col-3 card shadow p-2 m-2">
+            <div class="p-2 text-center pb-3">
+                <label >Moje podsumowanie</label>
+            </div>
+            <div >
+                <div class="text-justify"> Otwarte zgłoszenia: </div>
+                <div class="text-justify"> Zamknięte zgłoszenia(30dni): </div>
+                <div class="text-justify"> Nieprzepisane zgłoszenia: </div>
+                <div class="text-justify"> Lista do zrobienia: </div>
+            </div>
+
         </div>
-        <div class="col-6">
-            2 of 3 (wider)
+        <div class="col card shadow m-2" style="width: 18rem; min-height: 300px;">
+            <div class="p-2 text-center pb-3">
+                Moje zgłoszenia do rozwiązania (last 10)
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+            </ul>
         </div>
-        <div class="col">
-            3 of 3
+        <div class="col-3 card shadow m-2 "  style="width: 18rem;">
+            <div class="p-2 text-center pb-3">
+                Lista to do
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+            </ul>
         </div>
+    </div>
 @endsection
+
