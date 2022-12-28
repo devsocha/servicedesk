@@ -14,7 +14,7 @@ class TechnicanController extends Controller
         return view('admin.requests');
     }
     public function admin(){
-        return view('admin.requests');
+        return view('admin.settingsUsers');
     }
 
 }
