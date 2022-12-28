@@ -1,6 +1,6 @@
 Ticket application by DevSocha
 
-/*Start*/
+/* Start */
 1. Put files into server.
 2. Run cmd and in path application use command "php artisan migrate"
 3. Create super admin in db
