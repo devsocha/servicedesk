@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 /* Login */
-
+Route::get('login',[\App\Http\Controllers\user\CredentialController::class,'login'])->name('login');
 
 
 

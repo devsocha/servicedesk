@@ -30,5 +30,8 @@ class CredentialController extends Controller
             return;
         }
     }
+    public function login(){
+        return view('general.login');
+    }
 }
 //TODO zrobić widok putPassword oraz dokonczyc weryfikacje usera
