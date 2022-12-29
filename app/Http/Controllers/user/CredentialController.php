@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CredentialController extends Controller
 {
     public function index($token,$email){
-        return view('putPassword',compact('token','email'));
+        return view('general.registration',compact('token','email'));
     }
     public function delete($id){
         User::where('id',$id)->delete();
@@ -17,13 +17,18 @@ class CredentialController extends Controller
     }
 
     public function userRegistration(){
-
+        $request->validate([
+            'password'=>'require',
+            'retypePassword'=>'require|same:password',
+        ]);
         if(User::where('email',$email)->where('token',$token)->exists()){
             User::update([
                 'password'=>$request->password,
                 'status'=>'Potwierdzone',
             ]);
+        }else{
+            return;
         }
     }
 }
-//TO DO zrobić widok putPassword oraz dokonczyc weryfikacje usera
+//TODO zrobić widok putPassword oraz dokonczyc weryfikacje usera
