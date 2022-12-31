@@ -5,7 +5,8 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 class CredentialController extends Controller
 {
     public function index($token,$email){
@@ -16,18 +17,20 @@ class CredentialController extends Controller
         return redirect()->back();
     }
 
-    public function userRegistration(){
+    public function userRegistration(Request $request){
         $request->validate([
-            'password'=>'require',
-            'retypePassword'=>'require|same:password',
+            'password'=>'required',
+            'retypePassword'=>'required|same:password',
         ]);
-        if(User::where('email',$email)->where('token',$token)->exists()){
-            User::update([
-                'password'=>$request->password,
+        if(User::where('email',$request->email)->where('token',$request->token)->exists()){
+            User::where('email',$request->email)->where('token',$request->token)->update([
+                'password'=>Hash::make($request->password),
                 'status'=>'Potwierdzone',
+                'token'=>'',
             ]);
+            return redirect()->route('login')->with(['success'=>'Account verified correctly']);
         }else{
-            return;
+            return redirect()->back()->with(['error'=>'This account link expired']);
         }
     }
     public function login(){

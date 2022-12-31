@@ -1,16 +1,19 @@
+@include('admin.layout.style')
+@include('admin.layout.scripts')
 <div class="container-fluid">
-<form>
-    <input type="hidden">
-    <input type="hidden">
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword2" class="form-label">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword2">
-    </div>
+<form style="padding-top:40px; margin:auto; width: 300px;" method="post" action="{{route('user.registrationSubmit')}}">
+    <h3>Confirm your password</h3>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    @if(session()->has('error'))
+        <div style="color:red">{{session()->get('error')}}</div>
+    @endif
+    @csrf
+    <input type="hidden" name="email"value="{{$email}}" >
+    <input type="hidden" name="token"value="{{$token}}" >
+    <input type="password" name="password"class="form-control" placeholder="password" >
+    <br>
+    <input type="password" name="retypePassword" class="form-control" placeholder="retype password">
+    <br>
+    <input type="submit" class="btn btn-primary" value="verify">
 </form>
 </div>
