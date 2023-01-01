@@ -5,7 +5,7 @@
             <li class="nav-item m-1"><a href="{{route('technican.requests')}}" class="nav-link">Requests</a></li>
             <li class="nav-item m-1"><a href="{{route('options')}}" class="nav-link">Options</a></li>
             <li class="nav-item m-1"><a href="{{route('technican.settings')}}" class="nav-link">Admin</a></li>
-            <li class="nav-item m-1"><a href="#" class="nav-link">Logout</a></li>
+            <li class="nav-item m-1"><a href="{{route('logout')}}" class="nav-link">Logout</a></li>
         </ul>
     </header>
 </div>

@@ -20,5 +20,11 @@ class TechnicanController extends Controller
             'users'=>$users,
         ]);
     }
+    public function adminSettings(){
+        $users = User::where('rola',2)->orwhere('rola',3)->get();
+        return view('admin.settingsTechnican')->with([
+            'users'=>$users,
+        ]);
+    }
 
 }

@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 /* Login */
 Route::get('login',[\App\Http\Controllers\user\CredentialController::class,'login'])->name('login');
-
-
+Route::post('login/submit',[\App\Http\Controllers\user\CredentialController::class,'loginSubmit'])->name('loginSubmit');
+Route::get('logout',[\App\Http\Controllers\user\CredentialController::class,'logout'])->name('logout');
 
 /* User */
 Route::get('/', function () {
@@ -30,12 +30,16 @@ Route::post('registration/email/send',[\App\Http\Controllers\user\mails\Register
 
 /* Technican */
 Route::get('home/technican',[\App\Http\Controllers\technican\TechnicanController::class,'index'
-])->name('technican.home');
+])->name('technican.home')->middleware('auth','tech');
 Route::get('requests/technican',[\App\Http\Controllers\technican\TechnicanController::class,'requests'
-])->name('technican.requests');
+])->name('technican.requests')->middleware('auth','tech');
 
 
 /* Head Technican */
 Route::get('settings/admin',[\App\Http\Controllers\technican\TechnicanController::class,'admin'
 ])->name('technican.settings');
+Route::get('settings/admin/technican',[\App\Http\Controllers\technican\TechnicanController::class,'adminSettings'
+])->name('technican.settings.technican');
+Route::post('settings/admin/upgrade',[\App\Http\Controllers\technican\CredentialController::class,'upgradePermissions'
+])->name('technican.permission.upgrade');
 

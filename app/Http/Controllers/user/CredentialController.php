@@ -36,5 +36,32 @@ class CredentialController extends Controller
     public function login(){
         return view('general.login');
     }
+    public function loginSubmit(Request $request){
+        $request->validate([
+            'login'=>'required',
+            'password'=>'required',
+        ]);
+        $credentials = [
+            'login'=>$request->login,
+            'password'=>$request->password,
+            'status'=>'potwierdzone',
+        ];
+        if(Auth::attempt($credentials)){
+            if(Auth::guard('web')->user()->rola==1){
+                return redirect()->route('technican.home');
+            }elseif(Auth::guard('web')->user()->rola==2 || Auth::guard('web')->user()->rola==3){
+                return redirect()->route('technican.home');
+            }
+        }else{
+            return redirect()->route('login')->with('error','Błędne dane logowania');
+        }
+
+        }
+
+
+    public function logout(){
+        Auth::guard('web')->logout();
+        return redirect()->route('login');
+    }
 }
-//TODO zrobić widok putPassword oraz dokonczyc weryfikacje usera
+
