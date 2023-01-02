@@ -30,5 +30,27 @@ class TechnicanController extends Controller
         $user = User::where('id',$id)->first();
         return view('admin.editPerson',['user'=>$user,]);
     }
+    public function editSubmit(Request $request){
+        $request->validate([
+            'imie'=>'required',
+            'nazwisko'=>'required',
+            'email'=>'email|required',
+            'login'=>'required',
+            'rola'=>'required',
+        ]);
+        try{
+            User::where('id',$request->id)->update([
+                'imie'=>$request->imie,
+                'nazwisko'=>$request->nazwisko,
+                'email'=>$request->email,
+                'login'=>$request->login,
+                'rola'=>$request->rola,
+                'telefon'=>$request->telefon,
+            ]);
+            return redirect()->back()->with('success','Success edit person');
+        }catch (\Exception $e){
+            return redirect()->back()->with('error','Error: '.$e);
+        }
 
+    }
 }

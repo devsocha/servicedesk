@@ -43,5 +43,7 @@ Route::post('settings/admin/upgrade',[\App\Http\Controllers\technican\Credential
 ])->name('technican.permission.upgrade')->middleware('auth','tech','headtech');
 Route::get('settings/admin/users/edit/{id}',[\App\Http\Controllers\technican\TechnicanController::class,'edit'
 ])->name('technican.settings.users.edit')->middleware('auth','tech','headtech');
+Route::post('settings/admin/users/edit/submit',[\App\Http\Controllers\technican\TechnicanController::class,'editSubmit'
+])->name('technican.settings.users.edit.submit')->middleware('auth','tech','headtech');
 Route::get('general/user/delete/{id}',[\App\Http\Controllers\user\CredentialController::class,'delete'
 ])->name('user.delete');
