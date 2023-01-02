@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
+
 class CredentialController extends Controller
 {
     public function index($token,$email){
@@ -39,6 +41,13 @@ class CredentialController extends Controller
                 'login'=>'admin',
                 'password'=>Hash::make('admin'),
                 'email'=>'admin@example.pl',
+                'imie'=>'admin',
+                'nazwisko'=>'admin',
+                'status'=>'potwierdzone',
+                'id_firma'=>0,
+            ]);
+            User::where('login','admin')->update([
+                'rola'=>3,
             ]);
         }
         return view('general.login');
