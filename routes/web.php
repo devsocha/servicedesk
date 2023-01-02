@@ -37,9 +37,9 @@ Route::get('requests/technican',[\App\Http\Controllers\technican\TechnicanContro
 
 /* Head Technican */
 Route::get('settings/admin',[\App\Http\Controllers\technican\TechnicanController::class,'admin'
-])->name('technican.settings');
+])->name('technican.settings')->middleware('auth','tech','headtech');
 Route::get('settings/admin/technican',[\App\Http\Controllers\technican\TechnicanController::class,'adminSettings'
-])->name('technican.settings.technican');
+])->name('technican.settings.technican')->middleware('auth','tech','headtech');
 Route::post('settings/admin/upgrade',[\App\Http\Controllers\technican\CredentialController::class,'upgradePermissions'
-])->name('technican.permission.upgrade');
+])->name('technican.permission.upgrade')->middleware('auth','tech','headtech');
 
