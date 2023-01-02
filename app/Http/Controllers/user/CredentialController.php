@@ -39,7 +39,7 @@ class CredentialController extends Controller
                 'login'=>'admin',
                 'password'=>Hash::make('admin'),
                 'email'=>'admin@example.pl',
-            ])
+            ]);
         }
         return view('general.login');
     }
