@@ -6,7 +6,7 @@
             <form class="pt-4"action="{{route('technican.settings.users.edit.submit')}}" method="post">
                 @csrf
                 <div class="p-4">
-                    <input type="hidden"value="{{$user->id}}" name="id">
+                    <input type="hidden" value="{{$user->id}}" name="id">
                     @if(session()->has('success'))
                         <div style="color:green">{{session()->get('success')}}</div>
                     @endif
@@ -36,7 +36,7 @@
                                         <option value="2">Technik</option>
                                         <option value="1">User</option>
                                     @endif
-                                <select/><br><br>
+                                </select><br><br>
                         Telefon: <input  value="{{$user->telefon}}" name="telefon" type="text"/><br><br>
 
                     <input class="btn btn-primary" value="edytuj" type="submit"/>
