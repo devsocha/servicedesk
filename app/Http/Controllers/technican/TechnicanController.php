@@ -26,5 +26,9 @@ class TechnicanController extends Controller
             'users'=>$users,
         ]);
     }
+    public function edit($id){
+        $user = User::where('id',$id)->first();
+        return view('admin.editPerson',['user'=>$user,]);
+    }
 
 }

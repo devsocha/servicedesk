@@ -38,7 +38,7 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->status}}</td>
                             <td>
-                                <a class="btn btn-primary" href="#" role="button">Edytuj</a>
+                                <a class="btn btn-primary" href="{{route('technican.settings.users.edit',['id'=>$user->id])}}" role="button">Edytuj</a>
                                 <a class="btn btn-primary" href="{{route('user.delete',['id'=>$user->id])}}" role="button">Usuń</a>
                             </td>
                         </tr>

@@ -17,8 +17,7 @@ Route::get('general/registration/{token}/{email}',[\App\Http\Controllers\user\Cr
 ])->name('user.registration');
 Route::post('general/registration',[\App\Http\Controllers\user\CredentialController::class,'userRegistration'
 ])->name('user.registrationSubmit');
-Route::get('general/user/delete/{id}',[\App\Http\Controllers\user\CredentialController::class,'delete'
-])->name('user.delete');
+
 
 /* Emails User */
 Route::post('registration/email/send',[\App\Http\Controllers\user\mails\RegisterMailController::class,'sender'
@@ -42,4 +41,7 @@ Route::get('settings/admin/technican',[\App\Http\Controllers\technican\Technican
 ])->name('technican.settings.technican')->middleware('auth','tech','headtech');
 Route::post('settings/admin/upgrade',[\App\Http\Controllers\technican\CredentialController::class,'upgradePermissions'
 ])->name('technican.permission.upgrade')->middleware('auth','tech','headtech');
-
+Route::get('settings/admin/users/edit/{id}',[\App\Http\Controllers\technican\TechnicanController::class,'edit'
+])->name('technican.settings.users.edit')->middleware('auth','tech','headtech');
+Route::get('general/user/delete/{id}',[\App\Http\Controllers\user\CredentialController::class,'delete'
+])->name('user.delete');
