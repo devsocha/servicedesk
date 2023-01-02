@@ -34,6 +34,13 @@ class CredentialController extends Controller
         }
     }
     public function login(){
+        if(!User::exists()){
+            User::create([
+                'login'=>'admin',
+                'password'=>Hash::make('admin'),
+                'email'=>'admin@example.pl',
+            ])
+        }
         return view('general.login');
     }
     public function loginSubmit(Request $request){
