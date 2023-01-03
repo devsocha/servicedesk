@@ -2,8 +2,9 @@ Ticket application by DevSocha
 
 /* Start */
 1. Put files into server.
-2. Run cmd and in path application use command "php artisan migrate"
-3. Create Head Technican in db users with role = 3
+2. Run cmd and in path application use command Composer install 
+3. Run cmd and in path application use command "php artisan migrate"
+4. With first run app user with permissions HeadTechnican will be created. Credential are login:admin password:admin
 
 /* How works */
 1. Technican with role = 3 can create others
