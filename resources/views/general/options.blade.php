@@ -1,5 +1,6 @@
-@extends('admin.admin')
-@section('settingsContent')
+@extends('admin.layout.app')
+@section('tittle','Options')
+@section('content')
     <center>
 
         <div class="containter text-center shadow mt-5" style="width:1000px">
