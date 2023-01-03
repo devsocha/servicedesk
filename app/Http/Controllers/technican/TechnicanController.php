@@ -49,7 +49,7 @@ class TechnicanController extends Controller
             ]);
             return redirect()->back()->with('success','Success edit person');
         }catch (\Exception $e){
-            return redirect()->back()->with('error','Error: '.$e);
+            return redirect()->back()->with('error','Invalid save your profile');
         }
 
     }

@@ -11,8 +11,10 @@ Route::get('logout',[\App\Http\Controllers\user\CredentialController::class,'log
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('options',[\App\Http\Controllers\technican\TechnicanController::class,'options'
+Route::get('options',[\App\Http\Controllers\user\UserController::class,'options'
 ])->name('options');
+Route::post('options/submit',[\App\Http\Controllers\user\UserController::class,'optionsSubmit'
+])->name('options.submit');
 Route::get('general/registration/{token}/{email}',[\App\Http\Controllers\user\CredentialController::class,'index'
 ])->name('user.registration');
 Route::post('general/registration',[\App\Http\Controllers\user\CredentialController::class,'userRegistration'
