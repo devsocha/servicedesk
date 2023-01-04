@@ -3,11 +3,11 @@
     <center>
 
         <div class="containter text-center shadow mt-5" style="width:1000px">
-            <form class="pt-4"action="#" method="post">
+            <form class="pt-4"action="{{route('technican.category.submit')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 Miniaturka: <input type="file" value="{{old('photo')}}" name="photo" placeholder="User email"/>
                 <input type="text" value="{{old('name')}}" name="name" placeholder="Name"/>
-                <input type="text" value="{{old('description')}}" name="description" placeholder="Description"/>
+                <input type="text" value="default" name="description" placeholder="Description"/>
                 <div class="p-4">
                     @if(session()->has('success'))
                         <div style="color:green">{{session()->get('success')}}</div>
@@ -24,26 +24,27 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">photo</th>
+                        <th scope="col">icon</th>
                         <th scope="col">name</th>
                         <th scope="col">description</th>
                         <th scope="col">action</th>
                     </tr>
                     </thead>
                     <tbody>
-{{--                    @foreach($users as $user)--}}
-{{--                        <tr>--}}
-{{--                            <th scope="row">{{$loop->iteration}}</th>--}}
-{{--                            <td>{{$user->login}}</td>--}}
-{{--                            <td>{{$user->email}}</td>--}}
-{{--                            <td>{{$user->status}}</td>--}}
-{{--                            <td>--}}
-{{--                                <a class="btn btn-primary" href="{{route('technican.settings.users.edit',['id'=>$user->id])}}" role="button">Edytuj</a>--}}
-{{--                                <a class="btn btn-primary" href="{{route('user.delete',['id'=>$user->id])}}" role="button">Usuń</a>--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
-{{--                    @endforeach--}}
+                    @foreach($categories as $category)
+                        <tr>
+                            <th scope="row">{{$loop->iteration}}</th>
+                            <td><img style="max-width: 50px" src="{{asset('uploads/photos/icons').'/'.$category->photo}}"/></td>
+                            <td>{{$category->name}}</td>
+                            <td>{{$category->description}}</td>
 
+                            <td>
+                                <a class="btn btn-primary" href="#" role="button">Edytuj</a>
+                                <a class="btn btn-primary" href="{{route('technican.category.delete',['id'=>$category->id])}}" role="button">Usuń</a>
+                            </td>
+                        </tr>
+                    @endforeach
+{{--                    {{route('',['id'=>$category->id])}}--}}
                     </tbody>
                 </table>
             </div>

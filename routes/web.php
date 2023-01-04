@@ -51,3 +51,7 @@ Route::get('general/user/delete/{id}',[\App\Http\Controllers\user\CredentialCont
 ])->name('user.delete')->middleware('auth','tech','headtech');;
 Route::get('technican/admin/category',[\App\Http\Controllers\technican\CategoryController::class,'index'
 ])->name('technican.category')->middleware('auth','tech','headtech');
+Route::post('technican/admin/category/submit',[\App\Http\Controllers\technican\CategoryController::class,'store'
+])->name('technican.category.submit')->middleware('auth','tech','headtech');
+Route::get('technican/admin/category/delete/{id}',[\App\Http\Controllers\technican\CategoryController::class,'destroy'
+])->name('technican.category.delete')->middleware('auth','tech','headtech');
