@@ -48,4 +48,6 @@ Route::get('settings/admin/users/edit/{id}',[\App\Http\Controllers\technican\Tec
 Route::post('settings/admin/users/edit/submit',[\App\Http\Controllers\technican\TechnicanController::class,'editSubmit'
 ])->name('technican.settings.users.edit.submit')->middleware('auth','tech','headtech');
 Route::get('general/user/delete/{id}',[\App\Http\Controllers\user\CredentialController::class,'delete'
-])->name('user.delete');
+])->name('user.delete')->middleware('auth','tech','headtech');;
+Route::get('technican/admin/category',[\App\Http\Controllers\technican\CategoryController::class,'index'
+])->name('technican.category')->middleware('auth','tech','headtech');

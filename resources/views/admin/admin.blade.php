@@ -7,7 +7,7 @@
             <ul class="nav nav-pills ">
                 <li class="nav-item m-1"><a href="{{route('technican.settings')}}" class="nav-link">Users</a></li>
                 <li class="nav-item m-1"><a href="{{route('technican.settings.technican')}}" class="nav-link">Technican</a></li>
-                <li class="nav-item m-1"><a href="#" class="nav-link">Category</a></li>
+                <li class="nav-item m-1"><a href="{{route('technican.category')}}" class="nav-link">Category</a></li>
             </ul>
         </header>
     </div>

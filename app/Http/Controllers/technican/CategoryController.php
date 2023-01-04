@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories ;
+        $categories = 'test';
         return view('admin.category')->with(['categories'=>$categories]);
     }
 
