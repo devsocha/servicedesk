@@ -68,20 +68,43 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::where('id',$id)->first();
+        return view('admin.categoryEdit')->with('category',$category);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'description'=>'required',
+        ]);
+        if($request->hasFile('photo')){
+            $request->validate([
+                'photo'=>'required|image| mimes: jpeg,jpg,png',
+            ]);
+            $ext = $request->file('photo')->extension();
+            $final = $request->name . '_category'.'.'.$ext;
+            $request->file('photo')->move(public_path('uploads/photos/icons/'),$final);
+            Category::where('id',$request->id)->update([
+                'name'=>$request->name,
+                'description'=>$request->description,
+                'photo'=>$final,
+            ]);
+        }else{
+            Category::where('id',$request->id)->update([
+                'name'=>$request->name,
+                'description'=>$request->description,
+            ]);
+        }
+        return redirect()->back()->with('success','Category updated success');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -91,7 +114,12 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::where('id',$id)->delete();
-        return redirect()->back()->with('success','Category id: '.$id.' success deleted ');
+        try{
+            Category::where('id',$id)->delete();
+            return redirect()->back()->with('success','Category id: '.$id.' success deleted ');
+        }catch(\Exception $e){
+            return redirect()->back()->with('error','Error try again later ');
+        }
+
     }
 }

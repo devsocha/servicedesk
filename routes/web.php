@@ -55,3 +55,7 @@ Route::post('technican/admin/category/submit',[\App\Http\Controllers\technican\C
 ])->name('technican.category.submit')->middleware('auth','tech','headtech');
 Route::get('technican/admin/category/delete/{id}',[\App\Http\Controllers\technican\CategoryController::class,'destroy'
 ])->name('technican.category.delete')->middleware('auth','tech','headtech');
+Route::get('technican/admin/category/edit/{id}',[\App\Http\Controllers\technican\CategoryController::class,'edit'
+])->name('technican.category.edit')->middleware('auth','tech','headtech');
+Route::post('technican/admin/category/edit/submit}',[\App\Http\Controllers\technican\CategoryController::class,'update'
+])->name('technican.category.edit.submit')->middleware('auth','tech','headtech');

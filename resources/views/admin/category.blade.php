@@ -39,7 +39,7 @@
                             <td>{{$category->description}}</td>
 
                             <td>
-                                <a class="btn btn-primary" href="#" role="button">Edytuj</a>
+                                <a class="btn btn-primary" href="{{route('technican.category.edit',['id'=>$category->id])}}" role="button">Edytuj</a>
                                 <a class="btn btn-primary" href="{{route('technican.category.delete',['id'=>$category->id])}}" role="button">Usuń</a>
                             </td>
                         </tr>
