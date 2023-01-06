@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+    public function index(){
+        return view('general.home');
+    }
     public function options(){
         return view('general.options', ['user'=>Auth::guard('web')->user()]);
     }

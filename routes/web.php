@@ -19,12 +19,12 @@ Route::get('general/registration/{token}/{email}',[\App\Http\Controllers\user\Cr
 ])->name('user.registration');
 Route::post('general/registration',[\App\Http\Controllers\user\CredentialController::class,'userRegistration'
 ])->name('user.registrationSubmit');
-
+Route::get('home',[\App\Http\Controllers\user\UserController::class, 'index']);
 
 /* Emails User */
 Route::post('registration/email/send',[\App\Http\Controllers\user\mails\RegisterMailController::class,'sender'
 ])->name('registrationEmail');
-
+//TODO Przypomnienie hasła przez wszystkich oraz reset przez panel administratora
 
 
 
