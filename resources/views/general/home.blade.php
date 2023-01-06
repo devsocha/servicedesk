@@ -1,41 +1,17 @@
 @extends('admin.admin')
 @section('settingsContent')
 <div class="card-group">
-    <div class="card " style=" width: 18rem;">
-        <center><img src="{{asset('uploads/photos/icons/default.jpg')}}" class="card-img-top" style="width:15rem" ></center>
-        <div class="card-body ">
-            <center><h3 class="card-title">Problemy ze sprzętem</h3>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p></center>
+    @foreach($categories as $category)
+    <a href="#" style="text-decoration:none; color:black;">
+        <div class="card" style=" width: 18rem;margin:3px;padding: 3px;  ">
+            <center><img src="{{asset('uploads/photos/icons'.'/'.$category->photo)}}" class="card-img-top" style="width:15rem" ></center>
+            <div class="card-body ">
+                <center><h3 class="card-title">{{$category->name}}</h3>
+                    <p class="card-text">@if($category->description=='default')<br>@else {{$category->description}}@endif</p></center>
+            </div>
         </div>
-    </div>
-    <div class="card " style=" width: 18rem;">
-        <center><img src="{{asset('uploads/photos/icons/default.jpg')}}" class="card-img-top" style="width:15rem" ></center>
-        <div class="card-body ">
-            <center><h3 class="card-title">Problemy ze sprzętem</h3>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p></center>
-        </div>
-    </div>
-    <div class="card " style=" width: 18rem;">
-        <center><img src="{{asset('uploads/photos/icons/default.jpg')}}" class="card-img-top" style="width:15rem" ></center>
-        <div class="card-body ">
-            <center><h3 class="card-title">Problemy ze sprzętem</h3>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p></center>
-        </div>
-    </div>
-    <div class="card " style=" width: 18rem;">
-        <center><img src="{{asset('uploads/photos/icons/default.jpg')}}" class="card-img-top" style="width:15rem" ></center>
-        <div class="card-body ">
-            <center><h3 class="card-title">Problemy ze sprzętem</h3>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p></center>
-        </div>
-    </div>
-    <div class="card " style=" width: 18rem;">
-        <center><img src="{{asset('uploads/photos/icons/default.jpg')}}" class="card-img-top" style="width:15rem" ></center>
-        <div class="card-body ">
-            <center><h3 class="card-title">Problemy ze sprzętem</h3>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p></center>
-        </div>
-    </div>
+    </a>
+    @endforeach
 </div>
 
 

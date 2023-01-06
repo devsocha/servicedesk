@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,8 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     public function index(){
-        return view('general.home');
+        $categories = Category::all();
+        return view('general.home')->with('categories',$categories);
     }
     public function options(){
         return view('general.options', ['user'=>Auth::guard('web')->user()]);
