@@ -1,5 +1,13 @@
 @extends('general.layout.app')
 @section('content')
+    <center>
+        @if(session()->has('success'))
+            <div style="color:green">{{session()->get('success')}}</div>
+        @endif
+        @if(session()->has('error'))
+            <div style="color:red">{{session()->get('error')}}</div>
+        @endif
+    </center>
 <div class="card-group">
     @foreach($categories as $category)
     <a href="{{route('forms',['id'=>$category->id])}}" style="text-decoration:none; color:black;">

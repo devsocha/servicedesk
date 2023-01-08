@@ -20,6 +20,10 @@ class HeadTechnicanCredential
         if(Auth::guard('web')->user()->rola==2){
             return redirect()->route('technican.home');
         }
+        if(Auth::user()->status!='potwierdzone'){
+            Auth::logout();
+            return redirect()->route('login');
+        }
         return $next($request);
     }
 }

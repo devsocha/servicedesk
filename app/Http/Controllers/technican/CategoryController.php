@@ -4,6 +4,7 @@ namespace App\Http\Controllers\technican;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Form;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -15,8 +16,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
+
         $categories = Category::all();
-        return view('admin.category')->with(['categories' => $categories]);
+        return view('admin.category')->with([
+            'categories' => $categories,
+        ]);
     }
 
     /**

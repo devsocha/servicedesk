@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TechnicanCredential
+class UserCredential
 {
     /**
      * Handle an incoming request.
@@ -17,8 +17,8 @@ class TechnicanCredential
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::guard('web')->user()->rola==1){
-            return redirect()->route('user.home');
+        if(Auth::user()->rola != 1){
+            return redirect()->back();
         }
         if(Auth::user()->status!='potwierdzone'){
             Auth::logout();

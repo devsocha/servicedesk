@@ -2,8 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Controllers\user\UserController;
 use App\Http\Middleware\HeadTechnicanCredential;
 use App\Http\Middleware\TechnicanCredential;
+use App\Http\Middleware\UserCredential;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,5 +69,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'tech' => TechnicanCredential::class,
         'headtech' => HeadTechnicanCredential::class,
+        'user' => UserCredential::class,
     ];
 }

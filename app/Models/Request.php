@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Request extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
+        'id',
+        'title',
         'description',
-        'photo',
+        'id_user',
+        'id_technik'
     ];
-    public function form(){
-        return $this->belongsToMany(Form::class,'id_categoria');
-    }
 }

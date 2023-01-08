@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('option_of_informations', function (Blueprint $table) {
+        Schema::create('requests', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->integer('id_user');
+            $table->integer('id_technik')->nullable();
+            $table->string('status')->default('new');
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('option_of_informations');
+        Schema::dropIfExists('request');
     }
 };

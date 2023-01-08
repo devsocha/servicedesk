@@ -21,10 +21,14 @@ Route::post('general/registration',[\App\Http\Controllers\user\CredentialControl
 ])->name('user.registrationSubmit');
 Route::get('home',[\App\Http\Controllers\user\UserController::class, 'index'
 ])->name('home');
-Route::get('forms/{id}',[\App\Http\Controllers\user\UserController::class, 'forms'
+Route::get('forms/{id}',[\App\Http\Controllers\user\FormsController::class, 'index'
 ])->name('forms');
-Route::get('requests',[\App\Http\Controllers\user\UserController::class, 'index'
+Route::get('requests',[\App\Http\Controllers\user\RequestController::class, 'index'
 ])->name('requests');
+Route::get('form/{id}',[\App\Http\Controllers\user\FormController::class, 'index'
+])->name('form');
+Route::post('form/submit',[\App\Http\Controllers\user\FormController::class, 'submit'
+])->name('form.submit');
 
 /* Emails User */
 Route::post('registration/email/send',[\App\Http\Controllers\user\mails\RegisterMailController::class,'sender'
@@ -39,8 +43,10 @@ Route::get('home/technican',[\App\Http\Controllers\technican\TechnicanController
 ])->name('technican.home')->middleware('auth','tech');
 Route::get('requests/technican',[\App\Http\Controllers\technican\TechnicanController::class,'requests'
 ])->name('technican.requests')->middleware('auth','tech');
-
-
+Route::get('options/technican',[\App\Http\Controllers\technican\TechnicanController::class,'options'
+])->name('technican.options');
+Route::post('options/technican/submit',[\App\Http\Controllers\technican\TechnicanController::class,'optionsSubmit'
+])->name('technican.options.submit');
 /* Head Technican */
 Route::get('settings/admin',[\App\Http\Controllers\technican\TechnicanController::class,'admin'
 ])->name('technican.settings')->middleware('auth','tech','headtech');
@@ -64,3 +70,7 @@ Route::get('technican/admin/category/edit/{id}',[\App\Http\Controllers\technican
 ])->name('technican.category.edit')->middleware('auth','tech','headtech');
 Route::post('technican/admin/category/edit/submit}',[\App\Http\Controllers\technican\CategoryController::class,'update'
 ])->name('technican.category.edit.submit')->middleware('auth','tech','headtech');
+Route::get('technican/admin/forms',[\App\Http\Controllers\technican\FormsController::class,'index'
+])->name('technican.forms')->middleware('auth','tech','headtech');
+Route::post('technican/admin/forms/submit',[\App\Http\Controllers\technican\FormsController::class,'store'
+])->name('technican.forms.submit')->middleware('auth','tech','headtech');

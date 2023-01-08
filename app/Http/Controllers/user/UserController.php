@@ -16,10 +16,6 @@ class UserController extends Controller
         $categories = Category::all();
         return view('general.home')->with('categories',$categories);
     }
-    public function forms($id){
-        $forms = Form::where('id_categoria',$id)->get();
-        return view('general.forms')->with('forms',$forms);
-    }
     public function options(){
         return view('general.options', ['user'=>Auth::guard('web')->user()]);
     }

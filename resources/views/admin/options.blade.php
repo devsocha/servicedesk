@@ -1,4 +1,4 @@
-@extends('general.layout.app')
+@extends('admin.layout.app')
 @section('tittle','Options')
 @section('content')
     <center>
