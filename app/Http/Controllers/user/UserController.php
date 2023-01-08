@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Form;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,10 @@ class UserController extends Controller
     public function index(){
         $categories = Category::all();
         return view('general.home')->with('categories',$categories);
+    }
+    public function forms($id){
+        $forms = Form::where('id_categoria',$id)->get();
+        return view('general.forms')->with('forms',$forms);
     }
     public function options(){
         return view('general.options', ['user'=>Auth::guard('web')->user()]);

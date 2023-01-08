@@ -1,9 +1,9 @@
-@extends('admin.admin')
-@section('settingsContent')
+@extends('general.layout.app')
+@section('content')
 <div class="card-group">
     @foreach($categories as $category)
-    <a href="#" style="text-decoration:none; color:black;">
-        <div class="card" style=" width: 18rem;margin:3px;padding: 3px;  ">
+    <a href="{{route('forms',['id'=>$category->id])}}" style="text-decoration:none; color:black;">
+        <div class="card" style=" width: 18rem;margin:23px;padding: 3px; border:0; ">
             <center><img src="{{asset('uploads/photos/icons'.'/'.$category->photo)}}" class="card-img-top" style="width:15rem" ></center>
             <div class="card-body ">
                 <center><h3 class="card-title">{{$category->name}}</h3>

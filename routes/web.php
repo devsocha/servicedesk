@@ -19,7 +19,12 @@ Route::get('general/registration/{token}/{email}',[\App\Http\Controllers\user\Cr
 ])->name('user.registration');
 Route::post('general/registration',[\App\Http\Controllers\user\CredentialController::class,'userRegistration'
 ])->name('user.registrationSubmit');
-Route::get('home',[\App\Http\Controllers\user\UserController::class, 'index']);
+Route::get('home',[\App\Http\Controllers\user\UserController::class, 'index'
+])->name('home');
+Route::get('forms/{id}',[\App\Http\Controllers\user\UserController::class, 'forms'
+])->name('forms');
+Route::get('requests',[\App\Http\Controllers\user\UserController::class, 'index'
+])->name('requests');
 
 /* Emails User */
 Route::post('registration/email/send',[\App\Http\Controllers\user\mails\RegisterMailController::class,'sender'
