@@ -18,10 +18,10 @@
                     @foreach($requestsInfo as $request)
                                 <tr>
 
-                                    <th scope="row"><a href="#" style="text-decoration: none;color:black">{{$loop->iteration}}</a></th>
-                                    <td><a href="#"style="text-decoration: none;color:black">{{$request->title}}</a></td>
-                                    <td><a href="#"style="text-decoration: none;color:black">{{$request->status}}</a></td>
-                                    <td><a href="#"style="text-decoration: none;color:black">{{$request->created_at}}</a></td>
+                                    <th scope="row"><a href="{{route('requestsView',['id'=>$request->id])}}" style="text-decoration: none;color:black">{{$loop->iteration}}</a></th>
+                                    <td><a href="{{route('requestsView',['id'=>$request->id])}}"style="text-decoration: none;color:black">{{$request->title}}</a></td>
+                                    <td><a href="{{route('requestsView',['id'=>$request->id])}}"style="text-decoration: none;color:black">{{$request->status}}</a></td>
+                                    <td><a href="{{route('requestsView',['id'=>$request->id])}}"style="text-decoration: none;color:black">{{$request->created_at}}</a></td>
                                 </tr>
 
                     @endforeach

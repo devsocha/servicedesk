@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 /* Login */
-Route::get('login',[\App\Http\Controllers\user\CredentialController::class,'login'])->name('login');
-Route::post('login/submit',[\App\Http\Controllers\user\CredentialController::class,'loginSubmit'])->name('loginSubmit');
+Route::get('login',[\App\Http\Controllers\user\CredentialController::class,'login'])->name('login')->middleware('unauth');
+Route::post('login/submit',[\App\Http\Controllers\user\CredentialController::class,'loginSubmit'])->name('loginSubmit')->middleware('unauth');
 Route::get('logout',[\App\Http\Controllers\user\CredentialController::class,'logout'])->name('logout');
 
 /* User */
@@ -12,23 +12,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('options',[\App\Http\Controllers\user\UserController::class,'options'
-])->name('options');
+])->name('options')->middleware('auth','user');
 Route::post('options/submit',[\App\Http\Controllers\user\UserController::class,'optionsSubmit'
-])->name('options.submit');
+])->name('options.submit')->middleware('auth','user');
 Route::get('general/registration/{token}/{email}',[\App\Http\Controllers\user\CredentialController::class,'index'
 ])->name('user.registration');
 Route::post('general/registration',[\App\Http\Controllers\user\CredentialController::class,'userRegistration'
 ])->name('user.registrationSubmit');
 Route::get('home',[\App\Http\Controllers\user\UserController::class, 'index'
-])->name('home');
+])->name('home')->middleware('auth','user');
 Route::get('forms/{id}',[\App\Http\Controllers\user\FormsController::class, 'index'
-])->name('forms');
+])->name('forms')->middleware('auth','user');
 Route::get('requests',[\App\Http\Controllers\user\RequestController::class, 'index'
-])->name('requests');
+])->name('requests')->middleware('auth','user');
 Route::get('form/{id}',[\App\Http\Controllers\user\FormController::class, 'index'
-])->name('form');
+])->name('form')->middleware('auth','user');
 Route::post('form/submit',[\App\Http\Controllers\user\FormController::class, 'submit'
-])->name('form.submit');
+])->name('form.submit')->middleware('auth','user');
+Route::get('requests-view/{id}',[\App\Http\Controllers\user\RequestController::class, 'show'
+])->name('requestsView')->middleware('auth','user');
 
 /* Emails User */
 Route::post('registration/email/send',[\App\Http\Controllers\user\mails\RegisterMailController::class,'sender'

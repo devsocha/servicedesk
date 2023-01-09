@@ -14,4 +14,11 @@ class RequestController extends Controller
             'requestsInfo'=>$requests,
         ]);
     }
+    public function show($id)
+    {
+        $form = \App\Models\Request::where('id', $id)->first();
+        return view('general.requestView', [
+            'form' => $form,
+        ]);
+    }
 }

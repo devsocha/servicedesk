@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Controllers\user\UserController;
 use App\Http\Middleware\HeadTechnicanCredential;
 use App\Http\Middleware\TechnicanCredential;
+use App\Http\Middleware\UnAuth;
 use App\Http\Middleware\UserCredential;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -70,5 +71,6 @@ class Kernel extends HttpKernel
         'tech' => TechnicanCredential::class,
         'headtech' => HeadTechnicanCredential::class,
         'user' => UserCredential::class,
+        'unauth'=>UnAuth::class,
     ];
 }
