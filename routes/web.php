@@ -87,5 +87,5 @@ Route::post('technican/admin/forms/submit',[\App\Http\Controllers\technican\Form
 ])->name('technican.forms.submit')->middleware('auth','tech','headtech');
 Route::get('technican/admin/forms/edit/{id}',[\App\Http\Controllers\technican\FormsController::class,'edit'
 ])->name('technican.forms.edit')->middleware('auth','tech','headtech');
-Route::post('technican/admin/forms/submit',[\App\Http\Controllers\technican\FormsController::class,'update'
-])->name('technican.forms.edit')->middleware('auth','tech','headtech');
+Route::post('technican/admin/forms-edit/submit',[\App\Http\Controllers\technican\FormsController::class,'update'
+])->name('technican.forms.edit.submit')->middleware('auth','tech','headtech');

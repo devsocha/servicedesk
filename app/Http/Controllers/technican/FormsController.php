@@ -12,9 +12,15 @@ class FormsController extends Controller
     public function index(){
         $forms = Form::all();
         $categories = Category::all();
+        if(Category::exists()){
+            $isOrNo = true;
+        }else{
+            $isOrNo = false;
+        }
         return view('admin.forms')->with([
             'categories'=>$categories,
             'forms'=>$forms,
+            'isOrNo'=>$isOrNo,
             ]);
 
     }
@@ -60,11 +66,31 @@ class FormsController extends Controller
         }
     }
     public function edit($id){
-
+        $form = Form::where('id',$id)->first();
+        return view('admin.formsEdit',['form'=>$form]);
     }
 
-    public function update(){
-
+    public function update(Request $request){
+        $request->validate([
+            'name'=>'required',
+        ]);
+        if($request->hasFile('photo')){
+            $request->validate([
+                'photo'=>'required|image|mimes:jpg,png,jpeg',
+            ]);
+            $ext = $request->file('photo')->extension();
+            $final = $request->name . '_form'.'.'.$ext;
+            $request->file('photo')->move(public_path('uploads/photos/icons/'),$final);
+            Form::where('id',$request->id)->update([
+                'name' => $request->name,
+                'photo'=>$final,
+            ]);
+        }else{
+            Form::where('id',$request->id)->update([
+                'name' => $request->name,
+            ]);
+        }
+        return redirect()->back()->with('success','Form updated success');
     }
-    //TODO Edycja w zakładce Froms
+
 }

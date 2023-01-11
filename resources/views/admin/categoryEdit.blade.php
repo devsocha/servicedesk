@@ -28,7 +28,7 @@
                     @csrf
                     <tr>
                         <input type="hidden" value="{{$category->id}}" name="id"/>
-                        <td><input type="file" value="{{old('photo')}}" name="photo" placeholder="User email"/></td>
+                        <td><input type="file" value="{{old('photo')}}" name="photo"/></td>
                         <td><input type="text" value="{{$category->name}}" name="name" placeholder="Name"/></td>
                         <td><input type="text"  name="description" value="{{$category->description}}" placeholder="Description"/></td>
                         <td>

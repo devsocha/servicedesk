@@ -20,7 +20,7 @@
                     @if(session()->has('error'))
                         <div style="color:red">{{session()->get('error')}}</div>
                     @endif
-                    <input class="btn btn-secondary" value="add forms" type="submit"/>
+                    @if($isOrNo == true)<input class="btn btn-secondary" value="add forms" type="submit"/>@endif
                 </div>
             </form>
 
@@ -44,7 +44,7 @@
                             <td>{{$form->category->name}}</td>
 
                             <td>
-                                <a class="btn btn-primary" href="{{route('technican.category.edit',['id'=>$form->id])}}" role="button">Edytuj</a>
+                                <a class="btn btn-primary" href="{{route('technican.forms.edit',['id'=>$form->id])}}" role="button">Edytuj</a>
                                 <a class="btn btn-primary" href="{{route('technican.category.delete',['id'=>$form->id])}}" role="button">Usuń</a>
                             </td>
                         </tr>
