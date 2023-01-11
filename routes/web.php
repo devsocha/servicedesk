@@ -32,6 +32,7 @@ Route::post('form/submit',[\App\Http\Controllers\user\FormController::class, 'su
 Route::get('requests-view/{id}',[\App\Http\Controllers\user\RequestController::class, 'show'
 ])->name('requestsView')->middleware('auth','user');
 
+
 /* Emails User */
 Route::post('registration/email/send',[\App\Http\Controllers\user\mails\RegisterMailController::class,'sender'
 ])->name('registrationEmail');
@@ -49,6 +50,14 @@ Route::get('options/technican',[\App\Http\Controllers\technican\TechnicanControl
 ])->name('technican.options');
 Route::post('options/technican/submit',[\App\Http\Controllers\technican\TechnicanController::class,'optionsSubmit'
 ])->name('technican.options.submit');
+Route::get('technican/requests-view/{id}',[\App\Http\Controllers\technican\RequestController::class, 'index'
+])->name('technican.requestsView')->middleware('auth','tech');
+Route::get('requests/take/{id}',[\App\Http\Controllers\technican\RequestController::class, 'getTechnican'
+])->name('requestsViewTake')->middleware('auth','tech');
+Route::post('requests/take/new/{id}',[\App\Http\Controllers\technican\RequestController::class, 'getNewTechnican'
+])->name('requestsViewTakeNew')->middleware('auth','tech');
+Route::get('requests/end/{id}',[\App\Http\Controllers\technican\RequestController::class, 'endRequest'
+])->name('requestsViewEnd')->middleware('auth','tech');
 /* Head Technican */
 Route::get('settings/admin',[\App\Http\Controllers\technican\TechnicanController::class,'admin'
 ])->name('technican.settings')->middleware('auth','tech','headtech');
@@ -76,3 +85,7 @@ Route::get('technican/admin/forms',[\App\Http\Controllers\technican\FormsControl
 ])->name('technican.forms')->middleware('auth','tech','headtech');
 Route::post('technican/admin/forms/submit',[\App\Http\Controllers\technican\FormsController::class,'store'
 ])->name('technican.forms.submit')->middleware('auth','tech','headtech');
+Route::get('technican/admin/forms/edit/{id}',[\App\Http\Controllers\technican\FormsController::class,'edit'
+])->name('technican.forms.edit')->middleware('auth','tech','headtech');
+Route::post('technican/admin/forms/submit',[\App\Http\Controllers\technican\FormsController::class,'update'
+])->name('technican.forms.edit')->middleware('auth','tech','headtech');

@@ -18,6 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'login',
         'imie',
         'nazwisko',
@@ -28,7 +29,9 @@ class User extends Authenticatable
         'telefon',
         'password',
     ];
-
+    public function Requests(){
+        return $this->hasOne(Request::class,'id_technik','id');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -47,4 +50,5 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

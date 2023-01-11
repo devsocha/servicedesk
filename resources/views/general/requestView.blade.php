@@ -4,17 +4,24 @@
 
         <div class="containter shadow mt-5" style="width:1000px;padding-bottom: 50px;">
             <div class="row p-4">
-                <div class="col-11"><label> Title:</label>   {{$form->title}}</div>
-                <div class="col-1"><a href="{{route('requests')}}">BACK</a></div>
+                <div class="col-11"></div>
+                <div class="col-1"><a class="btn btn-danger" href="{{route('requests')}}">BACK</a></div>
+            </div>
+            <div class="row p-4">
+
+                <div class="col-3"style="text-align:right;"><label> Title:</label>   </div>
+                <div class="col-9"style="text-align:justify;"><input type="text" style="width: 540px" value="{{$form->title}}" disabled></div>
             </div>
             <div class="row p-4 text-center">
-                <div class="col"><label> Technican: </label>  @if($form->id_technik!=0) {{$form->id_technik}} @else Brak @endif</div>
-                <div class="col"><label> Status: </label>  {{$form->status}}</div>
+                <div class="col-3"style="text-align:right;"><label> Technican: </label>  </div>
+                <div class="col-3"style="text-align:justify;"><input type="text" value="@if($form->id_technik!=0) {{$technican->imie}} {{$technican->nazwisko}}@else Brak @endif" disabled></div>
+                <div class="col-1" style="text-align:right;"><label> Status: </label></div>
+                <div class="col-5" style="text-align:justify;"> <input type="text" value="{{$form->status}}" disabled></div>
             </div>
             <div class="row p-4 mt-4">
                 <div class="col-3" style="text-align:right;"><label> Description:</label></div>
-                <div class="col-9" style="text-align:justify;"><label> {{$form->description}}</label></div>
-            </div>
+                <div class="col-9" style="text-align:justify;"><textarea style="width: 500px;" disabled>{{$form->description}}</textarea>
+                </div>
 
 
         </div>

@@ -59,4 +59,12 @@ class FormsController extends Controller
             return redirect()->back()->with('error','Form deleted error');
         }
     }
+    public function edit($id){
+
+    }
+
+    public function update(){
+
+    }
+    //TODO Edycja w zakładce Froms
 }

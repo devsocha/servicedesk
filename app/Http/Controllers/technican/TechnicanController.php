@@ -10,10 +10,15 @@ use Illuminate\Support\Facades\Auth;
 class TechnicanController extends Controller
 {
     public function index(){
-        return view('admin.home');
+        $myId = Auth::guard('web')->user()->id;
+        $myRequests = \App\Models\Request::where('id_technik',$myId)->where('status','!=','closed')->take(10)->get();
+        return view('admin.home',[
+            'requestsInfo' => $myRequests,
+        ]);
     }
     public function requests(){
-        return view('admin.requests');
+        $requests = \App\Models\Request::all();
+        return view('admin.requests',['requestsInfo'=>$requests]);
     }
     public function admin(){
         $users = User::where('rola',1)->get();

@@ -15,4 +15,7 @@ class Request extends Model
         'id_user',
         'id_technik'
     ];
+    public function User(){
+        return $this->belongsTo(User::class,'id');
+    }
 }
