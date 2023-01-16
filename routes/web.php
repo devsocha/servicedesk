@@ -9,7 +9,7 @@ Route::get('logout',[\App\Http\Controllers\user\CredentialController::class,'log
 
 /* User */
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 Route::get('options',[\App\Http\Controllers\user\UserController::class,'options'
 ])->name('options')->middleware('auth','user');
@@ -31,12 +31,20 @@ Route::post('form/submit',[\App\Http\Controllers\user\FormController::class, 'su
 ])->name('form.submit')->middleware('auth','user');
 Route::get('requests-view/{id}',[\App\Http\Controllers\user\RequestController::class, 'show'
 ])->name('requestsView')->middleware('auth','user');
+Route::get('general/reset-password/{token}/{email}',[\App\Http\Controllers\user\mails\ResetPasswordMailController::class,'resetView'
+])->name('user.resetPassword');
+Route::post('general/reset-password',[\App\Http\Controllers\user\mails\ResetPasswordMailController::class,'resetViewSubmit'
+])->name('user.resetPassword.submit');
+
+
 
 
 /* Emails User */
 Route::post('registration/email/send',[\App\Http\Controllers\user\mails\RegisterMailController::class,'sender'
 ])->name('registrationEmail');
-//TODO Przypomnienie hasła przez wszystkich oraz reset przez panel administratora
+Route::post('restart/email/send',[\App\Http\Controllers\user\mails\ResetPasswordMailController::class,'sender'
+])->name('resetPasswordEmail');
+
 
 
 
