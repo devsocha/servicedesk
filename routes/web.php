@@ -35,7 +35,9 @@ Route::get('general/reset-password/{token}/{email}',[\App\Http\Controllers\user\
 ])->name('user.resetPassword');
 Route::post('general/reset-password',[\App\Http\Controllers\user\mails\ResetPasswordMailController::class,'resetViewSubmit'
 ])->name('user.resetPassword.submit');
-
+//TODO zrobić layaut pod reset hasła i dodac button do logowania
+//TODO wrzucić formularz do panelu admina przy użytkowniku i techniku resetujący hasło.
+//TODO Przetestować działanie
 
 
 

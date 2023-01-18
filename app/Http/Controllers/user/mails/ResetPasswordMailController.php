@@ -7,6 +7,7 @@ use App\Mail\RestartPassword;
 use App\Mail\WebsiteEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
 class ResetPasswordMailController extends Controller
@@ -28,9 +29,23 @@ class ResetPasswordMailController extends Controller
         }
     }
     public function resetView($token,$email){
-
+        return view('resetPassword')->with([
+            'token'=>$token,
+            'email'=>$email,
+        ]);
     }
     public function resetViewSubmit(Request $request){
-
+        if(User::where('token',$request->token)->where('email',$request->email)->exist()){
+            $request->validate([
+                'password'=>'required',
+                'repassword'=>'required| same:password'
+            ]);
+            User::where('token',$request->token)->where('email',$request->email)->update([
+                'token'=>'',
+                'password'=>Hash::make($request->password),
+            ]);
+            return redirect()->route('login')->with('success','Password change correctly');
+        }
+        return redirect()->back()->with(['error'=>'This account link expired']);
     }
 }

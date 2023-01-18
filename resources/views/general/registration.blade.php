@@ -1,5 +1,5 @@
-@include('admin.layout.style')
-@include('admin.layout.scripts')
+@include('general.layout.style')
+@include('general.layout.scripts')
 <div class="container-fluid">
 <form style="padding-top:40px; margin:auto; width: 300px;" method="post" action="{{route('user.registrationSubmit')}}">
     <h3>Confirm your password</h3>
