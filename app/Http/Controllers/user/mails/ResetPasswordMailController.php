@@ -38,7 +38,7 @@ class ResetPasswordMailController extends Controller
         if(User::where('token',$request->token)->where('email',$request->email)->exist()){
             $request->validate([
                 'password'=>'required',
-                'repassword'=>'required| same:password'
+                'retypePassword'=>'required| same:password'
             ]);
             User::where('token',$request->token)->where('email',$request->email)->update([
                 'token'=>'',
