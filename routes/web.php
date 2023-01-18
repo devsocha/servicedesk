@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 /* Login */
 Route::get('login',[\App\Http\Controllers\user\CredentialController::class,'login'])->name('login')->middleware('unauth');
-Route::post('login/submit',[\App\Http\Controllers\user\CredentialController::class,'loginSubmit'])->name('loginSubmit')->middleware('unauth');
+Route::post('login/submit',[\App\Http\Controllers\user\CredentialController::class,'loginSubmit'])->name('loginSubmit');
 Route::get('logout',[\App\Http\Controllers\user\CredentialController::class,'logout'])->name('logout');
 
 /* User */
@@ -35,9 +35,7 @@ Route::get('general/reset-password/{token}/{email}',[\App\Http\Controllers\user\
 ])->name('user.resetPassword');
 Route::post('general/reset-password',[\App\Http\Controllers\user\mails\ResetPasswordMailController::class,'resetViewSubmit'
 ])->name('user.resetPassword.submit');
-//TODO zrobić layaut pod reset hasła i dodac button do logowania
-//TODO wrzucić formularz do panelu admina przy użytkowniku i techniku resetujący hasło.
-//TODO Przetestować działanie
+
 
 
 
@@ -47,7 +45,9 @@ Route::post('registration/email/send',[\App\Http\Controllers\user\mails\Register
 Route::post('restart/email/send',[\App\Http\Controllers\user\mails\ResetPasswordMailController::class,'sender'
 ])->name('resetPasswordEmail');
 
-
+//TODO zrobić layaut pod reset hasła i dodac button do logowania
+//TODO wrzucić formularz do panelu admina przy użytkowniku i techniku resetujący hasło.
+//TODO Przetestować działanie
 
 
 

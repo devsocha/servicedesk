@@ -29,13 +29,13 @@ class ResetPasswordMailController extends Controller
         }
     }
     public function resetView($token,$email){
-        return view('resetPassword')->with([
+        return view('general.restartPassword')->with([
             'token'=>$token,
             'email'=>$email,
         ]);
     }
     public function resetViewSubmit(Request $request){
-        if(User::where('token',$request->token)->where('email',$request->email)->exist()){
+        if(User::where('token',$request->token)->where('email',$request->email)->exists()){
             $request->validate([
                 'password'=>'required',
                 'retypePassword'=>'required| same:password'

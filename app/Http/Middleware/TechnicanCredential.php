@@ -18,7 +18,7 @@ class TechnicanCredential
     public function handle(Request $request, Closure $next)
     {
         if(Auth::guard('web')->user()->rola==1){
-            return redirect()->route('user.home');
+            return redirect()->route('home');
         }
         if(Auth::user()->status!='potwierdzone'){
             Auth::logout();

@@ -39,9 +39,14 @@
                                 </select><br><br>
                         Telefon: <input  value="{{$user->telefon}}" name="telefon" type="text"/><br><br>
 
-                    <input class="btn btn-primary" value="edytuj" type="submit"/>
-                    <a class="btn btn-secondary" href="{{route('technican.settings')}}">Cofnij</a>
+                    <input class="btn btn-primary" value="edit" type="submit"/>
+                    <a class="btn btn-secondary" href="{{route('technican.settings')}}">Back</a>
                 </div>
+            </form>
+            <form class="pt-4" action="{{route('resetPasswordEmail')}}" method="post">
+            @csrf
+                <input type="hidden" value="{{$user->email}}" name="email">
+                <input class="btn btn-primary" value="Reset password" type="submit"/>
             </form>
 
 

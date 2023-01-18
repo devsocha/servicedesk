@@ -20,7 +20,7 @@ class UserCredential
         if(Auth::user()->rola != 1){
             return redirect()->route('technican.home');
         }
-        if(Auth::user()->status!='potwierdzone'){
+        if(Auth::user()->status!='potwierdzone' && Auth::user()->status!='Potwierdzone'){
             Auth::logout();
             return redirect()->route('login');
         }

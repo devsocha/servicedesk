@@ -64,7 +64,7 @@ class CredentialController extends Controller
         ];
         if(Auth::attempt($credentials)){
             if(Auth::guard('web')->user()->rola==1){
-                return redirect()->route('technican.home');
+                return redirect()->route('home');
             }elseif(Auth::guard('web')->user()->rola==2 || Auth::guard('web')->user()->rola==3){
                 return redirect()->route('technican.home');
             }
