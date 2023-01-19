@@ -35,7 +35,7 @@ Route::get('general/reset-password/{token}/{email}',[\App\Http\Controllers\user\
 ])->name('user.resetPassword');
 Route::post('general/reset-password',[\App\Http\Controllers\user\mails\ResetPasswordMailController::class,'resetViewSubmit'
 ])->name('user.resetPassword.submit');
-
+Route::get('reset-password',function (){return view('general.restartPasswordEmail');})->name('resetPassword');
 
 
 

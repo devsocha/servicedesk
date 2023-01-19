@@ -18,6 +18,8 @@
             <label for="exampleInputPassword1" class="form-label">Password</label>
             <input type="password" name="password" class="form-control" id="exampleInputPassword1">
         </div>
-        <button type="submit" class="btn btn-primary">Zaloguj</button>
+        <button type="submit" class="btn btn-primary">Sing up</button>
+        <a href="{{route('resetPassword')}}" class="btn btn-primary">Reset Password</a>
     </form>
+
 </div>
