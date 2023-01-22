@@ -7,9 +7,9 @@
                 <label >Moje podsumowanie</label>
             </div>
             <div >
-                <div class="text-justify"> Otwarte zgłoszenia: </div>
-                <div class="text-justify"> Zamknięte zgłoszenia(30dni): </div>
-                <div class="text-justify"> Nieprzepisane zgłoszenia: </div>
+                <div class="text-justify"> Otwarte zgłoszenia: {{$reportOpen}} </div>
+                <div class="text-justify"> Zamknięte zgłoszenia(30dni): {{$reportClosed}} </div>
+                <div class="text-justify"> Nieprzepisane zgłoszenia: {{$reportToTake}} </div>
                 <div class="text-justify"> Lista do zrobienia: </div>
             </div>
 

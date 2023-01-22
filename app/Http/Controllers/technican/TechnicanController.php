@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\technican;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\technican\reports\DashboardReportsController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,9 +12,16 @@ class TechnicanController extends Controller
 {
     public function index(){
         $myId = Auth::guard('web')->user()->id;
-        $myRequests = \App\Models\Request::where('id_technik',$myId)->where('status','!=','closed')->take(10)->get();
+        $reports = new DashboardReportsController();
+        $reportOpen = $reports->getOpenRequestsReport($myId);
+        $reportClosed = $reports->getClosedRequestsReport($myId);
+        $reportToTake  = $reports->getRequestsToTaken();
+        $myRequests = \App\Models\Request::where('id_technik',$myId)->where('status','in progress')->take(10)->get();
         return view('admin.home',[
             'requestsInfo' => $myRequests,
+            'reportOpen' => $reportOpen,
+            'reportClosed' => $reportClosed,
+            'reportToTake' => $reportToTake,
         ]);
     }
     public function requests(){
