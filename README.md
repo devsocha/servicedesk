@@ -9,14 +9,13 @@ Ticket application by DevSocha
 /* How works */
 1. Technican with role = 3 can create others
 2. You have 2 types of technican. Casual and Head.
-3. Users has different view than techicans.
+3. Users have different view than techicans.
 4. For create user you should do it in admin panel and send activation link.
-5. Technican has in home page private to do list.
+5. Technican has in home page private to do list. (in progress)
 6. Users can be from different companys
 
 
 /* What in future */
 - Pdf reports of tickets and all of information about technican works.
-- Change and custom form at category.
 - Casual users could accepting a form.
 - Public how to list for fastest answer and doing tasks
