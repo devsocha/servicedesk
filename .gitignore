@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+/.phpunit.cache
+>>>>>>> 25867e9 (Dodanie laravela)
 /node_modules
 /public/build
 /public/hot
