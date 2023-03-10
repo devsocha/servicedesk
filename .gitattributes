@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-* text=auto
-=======
-* text=auto eol=lf
->>>>>>> 25867e9 (Dodanie laravela)
 
+* text=auto
 *.blade.php diff=html
 *.css diff=css
 *.html diff=html
