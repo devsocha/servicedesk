@@ -70,8 +70,8 @@
                     </tr>
                     @foreach($toDoList as $toDo)
                         <tr>
-                            <th scope="col"><a href="#" style="text-decoration: none;color:black">{{$toDo->nazwa}}</a></th>
-                            <th scope="col"><a href="#" class="btn btn-secondary">x</a></th>
+                            <th scope="col">{{$toDo->nazwa}}</th>
+                            <th scope="col"><a href="{{route('removeToDo',['id'=>$toDo->id])}}" class="btn btn-secondary">x</a></th>
                         </tr>
                     @endforeach
 
