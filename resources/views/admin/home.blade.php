@@ -68,11 +68,13 @@
                         </form>
 
                     </tr>
+                    @foreach($toDoList as $toDo)
+                        <tr>
+                            <th scope="col"><a href="#" style="text-decoration: none;color:black">{{$toDo->nazwa}}</a></th>
+                            <th scope="col"><a href="#" class="btn btn-secondary">x</a></th>
+                        </tr>
+                    @endforeach
 
-                    <tr>
-                        <th scope="col"><a href="#" style="text-decoration: none;color:black">Zrobić to to to i tamto i moze tamto a i to</a></th>
-                        <th scope="col"><a href="#" class="btn btn-secondary">x</a></th>
-                    </tr>
                     </tbody>
                 </table>
         </div>

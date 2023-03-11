@@ -16,7 +16,7 @@ class ToDoListController extends Controller
             $request->validate([
                 'text'=>'required',
             ]);
-            if(ToDoList::where('technik_id',$id_user)->count()>3){
+            if(ToDoList::where('technik_id',$id_user)->count()>=4){
                 return redirect()->back()->with([
                     'error'=>'Wystąpił błąd, maksymalna ilość zadań jest równa 3',
                 ]);

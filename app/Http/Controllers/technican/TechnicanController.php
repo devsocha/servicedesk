@@ -12,16 +12,17 @@ class TechnicanController extends Controller
 {
     public function index(){
         $myId = Auth::guard('web')->user()->id;
-        $reports = new DashboardReportsController();
-        $reportOpen = $reports->getOpenRequestsReport($myId);
-        $reportClosed = $reports->getClosedRequestsReport($myId);
-        $reportToTake  = $reports->getRequestsToTaken();
+        $reportOpen = DashboardReportsController::getOpenRequestsReport($myId);
+        $toDoList = DashboardReportsController::getToDoList($myId);
+        $reportClosed = DashboardReportsController::getClosedRequestsReport($myId);
+        $reportToTake  = DashboardReportsController::getRequestsToTaken();
         $myRequests = \App\Models\Request::where('id_technik',$myId)->where('status','in progress')->take(10)->get();
         return view('admin.home',[
             'requestsInfo' => $myRequests,
             'reportOpen' => $reportOpen,
             'reportClosed' => $reportClosed,
             'reportToTake' => $reportToTake,
+            'toDoList'=>$toDoList,
         ]);
     }
     public function requests(){
