@@ -14,7 +14,7 @@ Route::get('/', function () {
 Route::get('options',[\App\Http\Controllers\user\UserController::class,'options'
 ])->name('options')->middleware('auth','user');
 Route::post('options/submit',[\App\Http\Controllers\user\UserController::class,'optionsSubmit'
-])->name('options.submit')->middleware('auth','user');
+])->name('options.submit')->middleware('auth');
 Route::get('general/registration/{token}/{email}',[\App\Http\Controllers\user\CredentialController::class,'index'
 ])->name('user.registration');
 Route::post('general/registration',[\App\Http\Controllers\user\CredentialController::class,'userRegistration'

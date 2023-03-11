@@ -20,6 +20,7 @@
                     Login: <input  value="{{$user->login}}" name="login" type="text"/><br><br>
                     Email: <input  value="{{$user->email}}" name="email" type="text"/><br><br>
                     Telefon: <input  value="{{$user->telefon}}" name="telefon" type="text"/><br><br>
+                    Old password: <input name="oldPassword" placeholder="*********" type="password"/><br><br>
                     Password: <input name="password" placeholder="*********" type="password"/><br><br>
                     Retype password: <input  name="retypePassword" placeholder="*********" type="password"/><br><br>
                     <input class="btn btn-primary" value="edytuj" type="submit"/>
