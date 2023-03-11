@@ -35,5 +35,17 @@ class ToDoListController extends Controller
             ]);
         }
     }
+    public function removeToDo($id){
+        try{
+            ToDoList::where('id',$id)->delete();
+            return redirect()->back()->with([
+                'success'=>'Poprawnie usunięto zadanie z listy',
+            ]);
+        }catch (\Exception $e){
+            return redirect()->back()->with([
+                'error'=>'Wystąpił błąd, spróbuj ponownie później',
+            ]);
+        }
+    }
 
 }
