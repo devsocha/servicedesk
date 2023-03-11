@@ -1,6 +1,12 @@
 @extends('admin.layout.app')
 @section('tittle','Strona główna')
 @section('content')
+    @if(session()->has('success'))
+        <div style="color:green">{{session()->get('success')}}</div>
+    @endif
+    @if(session()->has('error'))
+        <div style="color:red">{{session()->get('error')}}</div>
+    @endif
     <div class="row ">
         <div class="col-3 card shadow p-2 m-2">
             <div class="p-2 text-center pb-3">
@@ -55,8 +61,9 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <form method="post" action="#">
-                            <th scope="col"><input type="text" placeholder="Podaj zadanie"/></th>
+                        <form method="post" action="{{route('addToDo')}}">
+                            @csrf
+                            <th scope="col"><input type="text" name="text" placeholder="Podaj zadanie"/></th>
                             <th scope="col"><input class="btn btn-secondary" type="submit" value="+"></th>
                         </form>
 

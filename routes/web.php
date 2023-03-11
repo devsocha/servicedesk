@@ -45,12 +45,6 @@ Route::post('registration/email/send',[\App\Http\Controllers\user\mails\Register
 Route::post('restart/email/send',[\App\Http\Controllers\user\mails\ResetPasswordMailController::class,'sender'
 ])->name('resetPasswordEmail');
 
-//TODO zrobić layaut pod reset hasła i dodac button do logowania
-//TODO wrzucić formularz do panelu admina przy użytkowniku i techniku resetujący hasło.
-//TODO Przetestować działanie
-
-
-
 /* Technican */
 Route::get('home/technican',[\App\Http\Controllers\technican\TechnicanController::class,'index'
 ])->name('technican.home')->middleware('auth','tech');
@@ -68,6 +62,8 @@ Route::post('requests/take/new/{id}',[\App\Http\Controllers\technican\RequestCon
 ])->name('requestsViewTakeNew')->middleware('auth','tech');
 Route::get('requests/end/{id}',[\App\Http\Controllers\technican\RequestController::class, 'endRequest'
 ])->name('requestsViewEnd')->middleware('auth','tech');
+Route::post('to-do/add',[\App\Http\Controllers\technican\ToDoListController::class,'addToDo'
+])->name('addToDo')->middleware('auth','tech');
 /* Head Technican */
 Route::get('settings/admin',[\App\Http\Controllers\technican\TechnicanController::class,'admin'
 ])->name('technican.settings')->middleware('auth','tech','headtech');
