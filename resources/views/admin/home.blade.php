@@ -45,21 +45,7 @@
             </div>
         </div>
         <div class="col-3 card shadow m-2 "  style="width: 18rem;">
-{{--            <div class="row">--}}
-{{--                <div class=" col p-2 text-center pb-3">--}}
-{{--                    Lista to do--}}
-{{--                </div>--}}
-{{--                <div class="col p-2 text-center pb-3">--}}
-{{--                    <a href="#" class="btn btn-secondary">+</a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
-{{--            <ul class="list-group list-group-flush">--}}
-{{--                <li class="list-group-item">An item</li>--}}
-{{--                <li class="list-group-item">A second item</li>--}}
-{{--                <li class="list-group-item">A third item</li>--}}
-{{--            </ul>--}}
-            <div >
+            <div>
                 <table class="table ">
                     <thead>
                     <tr>

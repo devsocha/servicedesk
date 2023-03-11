@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('to_do_lists', function (Blueprint $table) {
             $table->id();
             $table->string('nazwa');
+            $table->bigInteger('technik_id');
             $table->timestamps();
         });
     }
