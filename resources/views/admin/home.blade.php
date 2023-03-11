@@ -45,14 +45,43 @@
             </div>
         </div>
         <div class="col-3 card shadow m-2 "  style="width: 18rem;">
-            <div class="p-2 text-center pb-3">
-                Lista to do
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-            </ul>
+{{--            <div class="row">--}}
+{{--                <div class=" col p-2 text-center pb-3">--}}
+{{--                    Lista to do--}}
+{{--                </div>--}}
+{{--                <div class="col p-2 text-center pb-3">--}}
+{{--                    <a href="#" class="btn btn-secondary">+</a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+{{--            <ul class="list-group list-group-flush">--}}
+{{--                <li class="list-group-item">An item</li>--}}
+{{--                <li class="list-group-item">A second item</li>--}}
+{{--                <li class="list-group-item">A third item</li>--}}
+{{--            </ul>--}}
+            <div >
+                <table class="table ">
+                    <thead>
+                    <tr>
+                        <th scope="col">Lista To Do (max 3)</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <form method="post" action="#">
+                            <th scope="col"><input type="text" placeholder="Podaj zadanie"/></th>
+                            <th scope="col"><input class="btn btn-secondary" type="submit" value="+"></th>
+                        </form>
+
+                    </tr>
+
+                    <tr>
+                        <th scope="col"><a href="#" style="text-decoration: none;color:black">Zrobić to to to i tamto i moze tamto a i to</a></th>
+                        <th scope="col"><a href="#" class="btn btn-secondary">x</a></th>
+                    </tr>
+                    </tbody>
+                </table>
         </div>
     </div>
 @endsection
