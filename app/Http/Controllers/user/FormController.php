@@ -33,5 +33,8 @@ class FormController extends Controller
     }
 
 
-   //Mój laptop jest w naprawie, mógłbym dostać zastępczy?
+   // Dodanie załącznika do formularza./
+    //dodanie zadan do formularza
+    //Poprawienia widokow
+    //akceptujacy dla formularzy
 }
