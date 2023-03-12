@@ -28,7 +28,6 @@ class UserController extends Controller
         ]);
         try{
             if($request->password){
-                //dodac old password do formularza i do walidacji
                 $request->validate([
                     'oldPassword'=>'required',
                     'password'=>'required',

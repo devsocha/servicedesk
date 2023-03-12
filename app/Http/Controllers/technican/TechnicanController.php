@@ -7,6 +7,7 @@ use App\Http\Controllers\technican\reports\DashboardReportsController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class TechnicanController extends Controller
 {
@@ -81,17 +82,26 @@ class TechnicanController extends Controller
         try{
             if(isset($request->password)){
                 $request->validate([
+                    'oldPassword'=>'required',
                     'password'=>'required',
                     'retypePassword'=>'required| same:password',
                 ]);
-                User::where('id',$request->id)->update([
-                    'imie'=>$request->imie,
-                    'nazwisko'=>$request->nazwisko,
-                    'email'=>$request->email,
+                $credential = [
                     'login'=>$request->login,
-                    'telefon'=>$request->telefon,
-                    'password'=>Hash::make($request->password),
-                ]);
+                    'password'=>$request->oldPassword,
+                ];
+                if(Auth::attempt($credential)){
+                    User::where('id',$request->id)->update([
+                        'imie'=>$request->imie,
+                        'nazwisko'=>$request->nazwisko,
+                        'email'=>$request->email,
+                        'login'=>$request->login,
+                        'telefon'=>$request->telefon,
+                        'password'=>Hash::make($request->password),
+                    ]);
+                }else{
+                    return redirect()->back()->with('error','Invalid old password');
+                }
             }else{
                 User::where('id',$request->id)->update([
                     'imie'=>$request->imie,
