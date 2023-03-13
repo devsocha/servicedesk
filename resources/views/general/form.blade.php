@@ -17,8 +17,12 @@
             <input name="id_user" type="hidden"  value="{{\Illuminate\Support\Facades\Auth::guard('web')->user()->id}}">
 
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Opis</label>
-                <textarea name="description"class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label for="desc" class="form-label">Opis</label>
+                <textarea name="description"class="form-control" id="desc" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="file" class="form-label">Załącznik</label>
+                <input type="file" name="file" class="form-control" id="file" >
             </div>
 
             <button type="submit" class="btn btn-primary">Wyślij zgłoszenie</button>
