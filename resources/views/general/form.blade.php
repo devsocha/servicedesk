@@ -21,7 +21,7 @@
                 <textarea name="description"class="form-control" id="desc" rows="3"></textarea>
             </div>
             <div class="mb-3">
-                <label for="file" class="form-label">Załącznik</label>
+                <label for="file" class="form-label">Załącznik (jpg,png,jpeg)</label>
                 <input type="file" name="file" class="form-control" id="file" >
             </div>
 

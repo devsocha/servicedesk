@@ -21,6 +21,7 @@ class FormController extends Controller
         $request->validate([
                         'title'=>'required',
                         'description'=>'required',
+                        'file'=>'max:20480'
                     ]);
         \App\Models\Request::create([
             'title' => $request->title,
