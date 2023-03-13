@@ -15,7 +15,7 @@
             <div >
                 <div class="text-justify"> Otwarte zgłoszenia: {{$reportOpen}} </div>
                 <div class="text-justify"> Zamknięte zgłoszenia(30dni): {{$reportClosed}} </div>
-                <div class="text-justify"> Nieprzepisane zgłoszenia: {{$reportToTake}} </div>
+                <div class="text-justify"> Nieprzypisane zgłoszenia: {{$reportToTake}} </div>
                 <div class="text-justify"> Lista do zrobienia: </div>
             </div>
 
