@@ -40,4 +40,7 @@ class RequestController extends Controller
         ]);
         return redirect()->back();
     }
+    public static function download($file){
+        return response()->download(public_path('uploads/requests/').$file);
+    }
 }

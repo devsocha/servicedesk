@@ -42,5 +42,11 @@
             <div class="col-9" style="text-align:justify;"><textarea style="width: 500px;" disabled>{{$form->description}}</textarea>
         </div>
     </div>
+        @if($form->filename)
+            <div class="row p-4 mt-4">
+                <div class="col-3" style="text-align:right;"><label> Załącznik do pobrania:</label></div>
+                <div class="col-9" style="text-align:justify;"><a class="btn btn-primary"href="{{route('download',['file'=>$form->filename])}}">Download</a></div>
+            </div>
+    @endif
 </center>
 @endsection

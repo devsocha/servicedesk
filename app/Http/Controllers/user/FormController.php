@@ -23,7 +23,7 @@ class FormController extends Controller
             ]);
             if($request->hasFile('file')){
                 $ext = $request->file('file')->extension();
-                $fullName = hash('sha256',$request->id_user).'.'.$ext;
+                $fullName = $request->id_user.hash('sha256',time()).'.'.$ext;
                 $request->file('file')->move(public_path('/uploads/requests/'),$fullName);
                 \App\Models\Request::create([
                     'filename'=>$fullName,
