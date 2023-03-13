@@ -30,7 +30,7 @@
                             <td><input type="file" value="{{old('photo')}}" name="photo"/></td>
                             <td><input type="text" value="{{$form->name}}" name="name" placeholder="Name"/></td>
                             <td>
-                                <input class="btn btn-secondary" value="edit category" type="submit"/>
+                                <input class="btn btn-secondary" value="edit form" type="submit"/>
                             </td>
                         </tr>
                     </form>

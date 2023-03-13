@@ -4,9 +4,6 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\Form;
-use App\Models\Information;
-use App\Models\Information_option;
-use Illuminate\Console\View\Components\Info;
 use Illuminate\Http\Request;
 
 class FormController extends Controller
@@ -18,19 +15,36 @@ class FormController extends Controller
         ]);
     }
     public function submit(Request $request){
-        $request->validate([
-                        'title'=>'required',
-                        'description'=>'required',
-                        'file'=>'max:20480'
-                    ]);
-        \App\Models\Request::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'id_user'=>$request->id_user,
-        ]);
-        return redirect()->route('home')->with([
-            'success'=>'Correct added request',
-        ]);
+        try{
+            $request->validate([
+                'title'=>'required',
+                'description'=>'required',
+                'file'=>'image|mimes:jpeg,png,jpg|max:2048',
+            ]);
+            if($request->hasFile('file')){
+                $ext = $request->file('file')->extension();
+                $fullName = hash('sha256',$request->id_user).'.'.$ext;
+                $request->file('file')->move(public_path('/uploads/requests/'),$fullName);
+                \App\Models\Request::create([
+                    'filename'=>$fullName,
+                    'title' => $request->title,
+                    'description' => $request->description,
+                    'id_user'=>$request->id_user,
+                ]);
+            }else{
+                \App\Models\Request::create([
+                    'title' => $request->title,
+                    'description' => $request->description,
+                    'id_user'=>$request->id_user,
+                ]);
+            }
+            return redirect()->route('home')->with([
+                'success'=>'Correct added request',
+            ]);
+        }catch(\Exception $e){
+            return redirect()->back()->with(['error'=>'Wystąpił błąd spróbuj ponownie później']);
+        }
+
     }
 
 

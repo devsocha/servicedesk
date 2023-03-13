@@ -2,7 +2,7 @@
 @section('content')
     <center>
 
-        <form style="width: 800px; margin-top:100px;" method="post" action="{{route('form.submit')}}">
+        <form style="width: 800px; margin-top:100px;" method="post" action="{{route('form.submit')}}" enctype="multipart/form-data">
         @csrf
             <div style="margin-bottom: 40px;">
                 FORM: {{$form->name}}

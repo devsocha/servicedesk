@@ -55,7 +55,7 @@
                 <table class="table ">
                     <thead>
                     <tr>
-                        <th scope="col">Lista To Do (max 3)</th>
+                        <th scope="col">Lista To Do (max 4)</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>

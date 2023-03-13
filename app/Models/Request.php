@@ -13,7 +13,8 @@ class Request extends Model
         'title',
         'description',
         'id_user',
-        'id_technik'
+        'id_technik',
+        'filename',
     ];
     public function User(){
         return $this->belongsTo(User::class,'id');
