@@ -8,24 +8,25 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function addTaskView($id){
-        return;
+    public static function getTasks($requestId){
+        return Task::where('request_id',$requestId)->get();
     }
     public static function addTask(Request $request){
         try{
             $request->validate([
-                'idRequest'=>'required',
-                'title'=>'required',
-                'desc'=>'desc'
+                'requestId'=>'required',
+                'task'=>'required',
+                'desc'=>'required',
             ]);
             Task::create([
-                'request_id'=>$request->idRequest,
-                'title'=>$request->title,
+                'request_id'=>$request->requestId,
+                'title'=>$request->task,
                 'description'=>$request->desc,
+                'status'=>'Open',
             ]);
             return redirect()->back()->with(['success'=>'Poprawnie dodano zadanie']);
         }catch (\Exception $e){
-            return redirect()->back()->with(['error'=>'Wystąpił błąd, spróbuj ponownie później']);
+            return redirect()->back()->with(['error'=>'Wystąpił błąd, spróbuj ponownie później'.$e]);
         }
 
     }

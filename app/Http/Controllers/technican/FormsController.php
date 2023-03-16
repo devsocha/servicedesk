@@ -67,7 +67,11 @@ class FormsController extends Controller
     }
     public function edit($id){
         $form = Form::where('id',$id)->first();
-        return view('admin.formsEdit',['form'=>$form]);
+        $tasks = TaskController::getTasks($id);
+        return view('admin.formsEdit',[
+            'form'=>$form,
+            'tasks'=>$tasks,
+        ]);
     }
 
     public function update(Request $request){
