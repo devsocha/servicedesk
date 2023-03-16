@@ -24,6 +24,14 @@ class FormsController extends Controller
             ]);
 
     }
+    public function deleteTask($id){
+        try{
+            TaskController::deleteTasks($id);
+            return redirect()->back()->with(['success'=>'Task deleted']);
+        }catch (\Exception $e){
+            return redirect()->back()->with(['error'=>'Error']);
+        }
+    }
     public function store(Request $request)
     {
         $request->validate([

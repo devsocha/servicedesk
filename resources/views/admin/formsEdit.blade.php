@@ -68,12 +68,11 @@
                     @if($tasks)
                         @foreach($tasks as $task)
                             <tr>
-                                <input type="hidden" value="{{$form->id}}" name="requestId"/>
                                 <td>{{$task->title}}</td>
                                 <td>{{$task->description}}</td>
                                 <td>
-                                    <input class="btn btn-secondary" value="Edit task" type="submit"/>
-                                    <input class="btn btn-secondary" value="Delete task" type="submit"/>
+                                    <a href="" class="btn btn-primary"  type="submit">Edit task</a>
+                                    <a href="{{route('deleteTasks',['id'=>$task->id])}}" class="btn btn-danger"  type="submit">Delete task</a>
                                 </td>
                             </tr>
                         @endforeach

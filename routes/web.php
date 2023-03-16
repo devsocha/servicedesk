@@ -100,3 +100,5 @@ Route::post('technican/admin/forms-edit/submit',[\App\Http\Controllers\technican
 ])->name('technican.forms.edit.submit')->middleware('auth','tech','headtech');
 Route::post('technican/admin/forms/tasks/add',[\App\Http\Controllers\technican\TaskController::class,'addTask'
 ])->middleware('auth','tech','headtech')->name('addTasks');
+Route::get('technican/admin/forms/tasks/delete/{id}',[\App\Http\Controllers\technican\FormsController::class,'deleteTask'
+])->middleware('auth','tech','headtech')->name('deleteTasks');
