@@ -48,5 +48,16 @@
                 <div class="col-9" style="text-align:justify;"><a class="btn btn-primary"href="{{route('download',['file'=>$form->filename])}}">Download</a></div>
             </div>
     @endif
+        @if($tasks)
+            @foreach($tasks as $task)
+                <tr>
+                    <td>{{$task->title}}</td>
+                    <td>{{$task->description}}</td>
+                    <td>
+                        <a href="{{route('deleteTasks',['id'=>$task->id])}}" class="btn btn-danger"  type="submit">Delete task</a>
+                    </td>
+                </tr>
+    @endforeach
+    @endif
 </center>
 @endsection

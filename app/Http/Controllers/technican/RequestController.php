@@ -13,11 +13,13 @@ class RequestController extends Controller
         $form = \App\Models\Request::where('id',$id)->first();
         $myId = Auth::guard()->user()->id;
         $technicans = User::where('rola','!=',1)->where('id','!=',$myId)->get();
+        $tasks = TaskController::getTasks($id);
         $technican = User::where('id',$form->id_technik)->first();
         return view('admin.requestView',[
             'form' => $form,
             'technicans'=>$technicans,
             'technican'=>$technican,
+            'tasks'=>$tasks,
         ]);
     }
     public function getTechnican($id){

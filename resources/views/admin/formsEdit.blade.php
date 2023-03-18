@@ -71,7 +71,6 @@
                                 <td>{{$task->title}}</td>
                                 <td>{{$task->description}}</td>
                                 <td>
-                                    <a href="" class="btn btn-primary"  type="submit">Edit task</a>
                                     <a href="{{route('deleteTasks',['id'=>$task->id])}}" class="btn btn-danger"  type="submit">Delete task</a>
                                 </td>
                             </tr>
