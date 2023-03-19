@@ -36,21 +36,27 @@ class CredentialController extends Controller
         }
     }
     public function login(){
-        if(!User::exists()){
-            User::create([
-                'login'=>'admin',
-                'password'=>Hash::make('admin'),
-                'email'=>'admin@example.pl',
-                'imie'=>'admin',
-                'nazwisko'=>'admin',
-                'status'=>'potwierdzone',
-                'id_firma'=>0,
-            ]);
-            User::where('login','admin')->update([
-                'rola'=>3,
-            ]);
+        Try{
+            if(!User::exists()){
+                User::create([
+                    'login'=>'admin',
+                    'password'=>Hash::make('admin'),
+                    'email'=>'admin@example.pl',
+                    'imie'=>'admin',
+                    'nazwisko'=>'admin',
+                    'status'=>'potwierdzone',
+                    'id_firma'=>0,
+                ]);
+                User::where('login','admin')->update([
+                    'rola'=>3,
+                ]);
+            }
+            return view('general.login');
+        }catch (\Exception $e){
+            return view('general.login');
         }
-        return view('general.login');
+
+
     }
     public function loginSubmit(Request $request){
         $request->validate([
@@ -62,15 +68,20 @@ class CredentialController extends Controller
             'password'=>$request->password,
             'status'=>'potwierdzone',
         ];
-        if(Auth::attempt($credentials)){
-            if(Auth::guard('web')->user()->rola==1){
-                return redirect()->route('home');
-            }elseif(Auth::guard('web')->user()->rola==2 || Auth::guard('web')->user()->rola==3){
-                return redirect()->route('technican.home');
+        try{
+            if(Auth::attempt($credentials)){
+                if(Auth::guard('web')->user()->rola==1){
+                    return redirect()->route('home');
+                }elseif(Auth::guard('web')->user()->rola==2 || Auth::guard('web')->user()->rola==3){
+                    return redirect()->route('technican.home');
+                }
+            }else{
+                return redirect()->route('login')->with('error','Błędne dane logowania');
             }
-        }else{
+        }catch (\Exception $e){
             return redirect()->route('login')->with('error','Błędne dane logowania');
         }
+
 
         }
 

@@ -47,17 +47,31 @@
                 <div class="col-3" style="text-align:right;"><label> Załącznik do pobrania:</label></div>
                 <div class="col-9" style="text-align:justify;"><a class="btn btn-primary"href="{{route('download',['file'=>$form->filename])}}">Download</a></div>
             </div>
-    @endif
-        @if($tasks)
-            @foreach($tasks as $task)
+        @endif
+            <table class="table ">
+                <thead>
                 <tr>
-                    <td>{{$task->title}}</td>
-                    <td>{{$task->description}}</td>
-                    <td>
-                        <a href="{{route('deleteTasks',['id'=>$task->id])}}" class="btn btn-danger"  type="submit">Delete task</a>
-                    </td>
+                    <th scope="col">Task</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
                 </tr>
-    @endforeach
-    @endif
-</center>
+                </thead>
+                <tbody>
+                @if($tasks)
+                    @foreach($tasks as $task)
+                        <tr>
+                            <td>{{$task->title}}</td>
+                            <td>{{$task->description}}</td>
+                            <td>{{$task->status}}</td>
+                            <td>
+                                <a href="#" class="btn btn-success"  type="submit">Completed</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
+                </tbody>
+            </table>
+    </div>
+        </center>
 @endsection
