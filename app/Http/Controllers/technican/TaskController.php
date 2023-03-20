@@ -14,6 +14,16 @@ class TaskController extends Controller
     public static function deleteTasks($taskId){
         return Task::where('id',$taskId)->delete();
     }
+    public static function completedTask($id){
+        try{
+            Task::where('id',$id)->update([
+                'status'=>'completed',
+            ]);
+            return redirect()->back();
+        }catch (\Exception $e){
+            return redirect()->back()->with(['error'=>'Error']);
+        }
+    }
     public static function addTask(Request $request){
         try{
             $request->validate([
