@@ -48,7 +48,7 @@
                 <div class="col-9" style="text-align:justify;"><a class="btn btn-primary"href="{{route('download',['file'=>$form->filename])}}">Download</a></div>
             </div>
         @endif
-            <table class="table ">
+            <table class="table" >
                 <thead>
                 <tr>
                     <th scope="col">Task</th>
@@ -60,13 +60,14 @@
                 <tbody>
                 @if($tasks)
                     @foreach($tasks as $task)
-                        <tr>
+                        <tr >
                             <td>{{$task->title}}</td>
                             <td>{{$task->description}}</td>
                             <td>{{$task->status}}</td>
                             <td>
-                                <a href="#" class="btn btn-success"  type="submit">Completed</a>
-                            </td>
+                                @if($task->status == 'Open')<a href="{{route('taskCompleted',['id'=>$task->id])}}" class="btn btn-success"  type="submit">Completed</a>
+                                @elseif($task->status == 'Completed') <a href="{{route('taskOpen',['id'=>$task->id])}}" class="btn btn-success"  type="submit"> Open</a> @endif
+                                </td>
                         </tr>
                     @endforeach
                 @endif

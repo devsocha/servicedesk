@@ -17,7 +17,17 @@ class TaskController extends Controller
     public static function completedTask($id){
         try{
             Task::where('id',$id)->update([
-                'status'=>'completed',
+                'status'=>'Completed',
+            ]);
+            return redirect()->back();
+        }catch (\Exception $e){
+            return redirect()->back()->with(['error'=>'Error']);
+        }
+    }
+    public static function returnTask($id){
+        try{
+            Task::where('id',$id)->update([
+                'status'=>'Open',
             ]);
             return redirect()->back();
         }catch (\Exception $e){
@@ -39,7 +49,7 @@ class TaskController extends Controller
             ]);
             return redirect()->back()->with(['success'=>'Poprawnie dodano zadanie']);
         }catch (\Exception $e){
-            return redirect()->back()->with(['error'=>'Wystąpił błąd, spróbuj ponownie później'.$e]);
+            return redirect()->back()->with(['error'=>'Wystąpił błąd, spróbuj ponownie później']);
         }
 
     }

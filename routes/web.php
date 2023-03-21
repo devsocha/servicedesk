@@ -67,6 +67,10 @@ Route::post('to-do/add',[\App\Http\Controllers\technican\ToDoListController::cla
 ])->name('addToDo')->middleware('auth','tech');
 Route::get('to-do/remove/{id}',[\App\Http\Controllers\technican\ToDoListController::class,'removeToDo'
 ])->name('removeToDo')->middleware('auth','tech');
+Route::get('task/completed/{id}',[\App\Http\Controllers\technican\TaskController::class,'completedTask'
+])->name('taskCompleted')->middleware('auth','tech');
+Route::get('task/open/{id}',[\App\Http\Controllers\technican\TaskController::class,'returnTask'
+])->name('taskOpen')->middleware('auth','tech');
 /* Head Technican */
 Route::get('settings/admin',[\App\Http\Controllers\technican\TechnicanController::class,'admin'
 ])->name('technican.settings')->middleware('auth','tech','headtech');
