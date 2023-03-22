@@ -28,7 +28,42 @@ class RequestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $request->validate([
+                'title'=>'required',
+                'description'=>'required',
+                'file'=>'image|mimes:jpeg,png,jpg|max:2048',
+            ]);
+            if($request->hasFile('file')){
+                $ext = $request->file('file')->extension();
+                $fullName = $request->id_user.hash('sha256',time()).'.'.$ext;
+                $request->file('file')->move(public_path('/uploads/requests/'),$fullName);
+                $request = \App\Models\Request::create([
+                    'filename'=>$fullName,
+                    'title' => $request->title,
+                    'description' => $request->description,
+                    'id_user'=> 0 ,
+                    'form_id'=>0,
+                ]);
+            }else{
+               $request =  \App\Models\Request::create([
+                    'title' => $request->title,
+                    'description' => $request->description,
+                    'id_user'=>0,
+                    'form_id'=> 0,
+                ]);
+            }
+            $data = [
+                'status'=>200,
+                'request'=>$request,
+            ];
+            return response()->json($data);
+        }catch(\Exception $e){
+            $data = [
+                'status'=>$e,
+            ];
+            return response()->json($data);
+        }
     }
 
     /**

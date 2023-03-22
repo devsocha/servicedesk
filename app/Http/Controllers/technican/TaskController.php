@@ -3,13 +3,19 @@
 namespace App\Http\Controllers\technican;
 
 use App\Http\Controllers\Controller;
+use App\Models\Form;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
     public static function getTasks($requestId){
-        return Task::where('request_id',$requestId)->get();
+        $request = \App\Models\Request::where('id',$requestId)->first();
+        return Task::where('request_id',$request->form_id)->get();
+    }
+    public static function getTask($requestId){
+        $request = Form::where('id',$requestId)->first();
+        return Task::where('request_id',$request->id)->get();
     }
     public static function deleteTasks($taskId){
         return Task::where('id',$taskId)->delete();

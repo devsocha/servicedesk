@@ -30,12 +30,14 @@ class FormController extends Controller
                     'title' => $request->title,
                     'description' => $request->description,
                     'id_user'=>$request->id_user,
+                    'form_id'=>0,
                 ]);
             }else{
                 \App\Models\Request::create([
                     'title' => $request->title,
                     'description' => $request->description,
                     'id_user'=>$request->id_user,
+                    'form_id'=>1,
                 ]);
             }
             return redirect()->route('home')->with([
