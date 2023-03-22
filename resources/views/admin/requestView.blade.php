@@ -66,7 +66,7 @@
                             <td>{{$task->status}}</td>
                             <td>
                                 @if($task->status == 'Open')<a href="{{route('taskCompleted',['id'=>$task->id])}}" class="btn btn-success"  type="submit">Completed</a>
-                                @elseif($task->status == 'Completed') <a href="{{route('taskOpen',['id'=>$task->id])}}" class="btn btn-success"  type="submit"> Open</a> @endif
+                                @elseif($task->status == 'Completed') <a href="{{route('taskOpen',['id'=>$task->id])}}" class="btn btn-success"  type="submit"> Reopen</a> @endif
                                 </td>
                         </tr>
                     @endforeach
