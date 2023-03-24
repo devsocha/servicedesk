@@ -14,8 +14,14 @@ Ticket application by DevSocha
 5. Technican has in home page private to do list. (in progress)
 6. Users can be from different companys
 
+/* API DOCUMENTATION */
+
+Show request:
+IP:
+localhost/request/show/{id}
+where id = id request in database
 
 /* What in future */
 - Pdf reports of tickets and all of information about technican works.
 - Casual users could accepting a form.
-- Public how to list for fastest answer and doing tasks
+- Public how to list for fastest answer
