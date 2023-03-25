@@ -12,7 +12,20 @@ class RequestController extends Controller
      */
     public function index()
     {
-        //
+        try{
+            $requests = Request::all();
+            $data = [
+                'status'=>200,
+                'requests' => $requests,
+            ];
+            return response()->json($data);
+        }catch (\Exception $e){
+            $data = [
+                'status'=>400,
+                'requests' => null,
+            ];
+            return response()->json($data);
+        }
     }
 
     /**
@@ -60,7 +73,7 @@ class RequestController extends Controller
             return response()->json($data);
         }catch(\Exception $e){
             $data = [
-                'status'=>$e,
+                'status'=>'400',
             ];
             return response()->json($data);
         }
