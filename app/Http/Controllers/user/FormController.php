@@ -30,21 +30,22 @@ class FormController extends Controller
                     'title' => $request->title,
                     'description' => $request->description,
                     'id_user'=>$request->id_user,
-                    'form_id'=>0,
+                    'form_id'=>$request->idForm,
                 ]);
             }else{
                 \App\Models\Request::create([
                     'title' => $request->title,
                     'description' => $request->description,
                     'id_user'=>$request->id_user,
-                    'form_id'=>1,
+                    'form_id'=>$request->idForm,
                 ]);
             }
             return redirect()->route('home')->with([
                 'success'=>'Correct added request',
             ]);
         }catch(\Exception $e){
-            return redirect()->back()->with(['error'=>'Wystąpił błąd spróbuj ponownie później']);
+            echo $e;
+            //return redirect()->back()->with(['error'=>'Wystąpił błąd spróbuj ponownie później']);
         }
 
     }

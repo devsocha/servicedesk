@@ -14,6 +14,7 @@ class Form extends Model
         'id_categoria',
         'name',
         'photo',
+
     ];
     public function category(){
         return $this->hasOne(Category::class,'id','id_categoria');

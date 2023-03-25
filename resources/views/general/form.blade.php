@@ -15,7 +15,7 @@
             </div>
             <input name="company"type="hidden"  value="{{\Illuminate\Support\Facades\Auth::guard('web')->user()->id_firma}}">
             <input name="id_user" type="hidden"  value="{{\Illuminate\Support\Facades\Auth::guard('web')->user()->id}}">
-
+            <input name="idForm" type="hidden"  value="{{$form->id}}">
             <div class="mb-3">
                 <label for="desc" class="form-label">Opis</label>
                 <textarea name="description"class="form-control" id="desc" rows="3"></textarea>

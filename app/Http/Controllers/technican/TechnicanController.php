@@ -27,7 +27,7 @@ class TechnicanController extends Controller
         ]);
     }
     public function requests(){
-        $requests = \App\Models\Request::all();
+        $requests = \App\Models\Request::orderBy('created_at','desc')->get();
         return view('admin.requests',['requestsInfo'=>$requests]);
     }
     public function admin(){
