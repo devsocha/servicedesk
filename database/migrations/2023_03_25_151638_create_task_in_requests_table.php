@@ -8,27 +8,23 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('task_in_requests', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('task_id');
             $table->bigInteger('request_id');
-            $table->string('title');
-            $table->string('description');
+            $table->string('status');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('tasks');
+        Schema::dropIfExists('task_in_requests');
     }
 };
