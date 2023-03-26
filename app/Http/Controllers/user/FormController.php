@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\technican\TaskController;
 use App\Models\Form;
 use Illuminate\Http\Request;
 
@@ -25,27 +26,30 @@ class FormController extends Controller
                 $ext = $request->file('file')->extension();
                 $fullName = $request->id_user.hash('sha256',time()).'.'.$ext;
                 $request->file('file')->move(public_path('/uploads/requests/'),$fullName);
-                \App\Models\Request::create([
+                $requests = \App\Models\Request::create([
                     'filename'=>$fullName,
                     'title' => $request->title,
                     'description' => $request->description,
                     'id_user'=>$request->id_user,
                     'form_id'=>$request->idForm,
                 ]);
+                TaskController::addTaksToRequest($request->idForm,$requests->id);
             }else{
-                \App\Models\Request::create([
+                $requests = \App\Models\Request::create([
                     'title' => $request->title,
                     'description' => $request->description,
                     'id_user'=>$request->id_user,
                     'form_id'=>$request->idForm,
                 ]);
+                TaskController::addTaksToRequest($request->idForm,$requests->id);
+
             }
             return redirect()->route('home')->with([
                 'success'=>'Correct added request',
             ]);
         }catch(\Exception $e){
             echo $e;
-            //return redirect()->back()->with(['error'=>'Wystąpił błąd spróbuj ponownie później']);
+//            return redirect()->back()->with(['error'=>'Wystąpił błąd spróbuj ponownie później']);
         }
 
     }

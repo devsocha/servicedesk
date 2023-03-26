@@ -22,7 +22,7 @@ return new class extends Migration
  //TODO Dodanie zapisywania taskow poprzez tworzenie nowego formularza
     //TODO mechanizm zmiany statusu
     //TODO wyswietlania na bazie relacji w panelu technika
-    //TODO in future zakladka dla technika z jego zadaniami do wykonania (Przypisanie zadan do technika dodatkowo)
+    //TODOgu in future zakladka dla technika z jego zadaniami do wykonania (Przypisanie zadan do technika dodatkowo)
     /**
      * Reverse the migrations.
      */

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\technican;
 use App\Http\Controllers\Controller;
 use App\Models\Form;
 use App\Models\Task;
+use App\Models\taskInRequest;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -29,6 +30,16 @@ class TaskController extends Controller
         }catch (\Exception $e){
             return redirect()->back()->with(['error'=>'Error']);
         }
+    }
+    public static function addTaksToRequest($idForm, $idRequest){
+            $tasks = Task::where('request_id',$idForm)->get();
+            foreach($tasks as $task){
+                taskInRequest::create([
+                    'task_id'=>$task->id,
+                    'request_id'=>$idRequest,
+                    'status'=>'Open',
+                ]);
+            }
     }
     public static function returnTask($id){
         try{
@@ -59,5 +70,5 @@ class TaskController extends Controller
         }
 
     }
-    //TODO modul zadan dla technika do requestu
+    //TODO wywalenie statusu i przepięcie go pod inny model
 }

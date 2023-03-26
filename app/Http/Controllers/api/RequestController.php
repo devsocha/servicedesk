@@ -13,7 +13,7 @@ class RequestController extends Controller
     public function index()
     {
         try{
-            $requests = Request::all();
+            $requests = \App\Models\Request::all();
             $data = [
                 'status'=>200,
                 'requests' => $requests,

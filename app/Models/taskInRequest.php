@@ -12,6 +12,7 @@ class taskInRequest extends Model
     protected $fillable = [
         'task_id',
         'status',
+        'request_id',
     ];
 
     public function task(){
