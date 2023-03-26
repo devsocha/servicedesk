@@ -11,8 +11,7 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
     public static function getTasks($requestId){
-        $request = \App\Models\Request::where('id',$requestId)->first();
-        return Task::where('request_id',$request->form_id)->get();
+        return taskInRequest::where('request_id',$requestId)->get();
     }
     public static function getTask($requestId){
         return taskInRequest::where('request_id',$requestId)->get();
@@ -26,7 +25,7 @@ class TaskController extends Controller
     }
     public static function completedTask($id){
         try{
-            Task::where('id',$id)->update([
+            taskInRequest::where('id',$id)->update([
                 'status'=>'Completed',
             ]);
             return redirect()->back();
@@ -46,7 +45,7 @@ class TaskController extends Controller
     }
     public static function returnTask($id){
         try{
-            Task::where('id',$id)->update([
+            taskInRequest::where('id',$id)->update([
                 'status'=>'Open',
             ]);
             return redirect()->back();

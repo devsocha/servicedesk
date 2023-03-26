@@ -61,8 +61,8 @@
                 @if($tasks)
                     @foreach($tasks as $task)
                         <tr >
-                            <td>{{$task->title}}</td>
-                            <td>{{$task->description}}</td>
+                            <td>{{$task->task->title}}</td>
+                            <td>{{$task->task->description}}</td>
                             <td>{{$task->status}}</td>
                             <td>
                                 @if($task->status == 'Open')<a href="{{route('taskCompleted',['id'=>$task->id])}}" class="btn btn-success"  type="submit">Completed</a>
