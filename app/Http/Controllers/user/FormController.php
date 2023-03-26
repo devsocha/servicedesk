@@ -48,8 +48,9 @@ class FormController extends Controller
                 'success'=>'Correct added request',
             ]);
         }catch(\Exception $e){
-            echo $e;
-//            return redirect()->back()->with(['error'=>'Wystąpił błąd spróbuj ponownie później']);
+            // comment if you want to check exception
+//            echo $e;
+            return redirect()->back()->with(['error'=>'Wystąpił błąd spróbuj ponownie później']);
         }
 
     }

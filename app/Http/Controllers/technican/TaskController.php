@@ -15,10 +15,13 @@ class TaskController extends Controller
         return Task::where('request_id',$request->form_id)->get();
     }
     public static function getTask($requestId){
-        $request = Form::where('id',$requestId)->first();
-        return Task::where('request_id',$request->id)->get();
+        return taskInRequest::where('request_id',$requestId)->get();
+    }
+    public static function getTaskInOptions($requestId){
+        return Task::where('request_id',$requestId)->get();
     }
     public static function deleteTasks($taskId){
+        taskInRequest::where('task_id',$taskId)->delete();
         return Task::where('id',$taskId)->delete();
     }
     public static function completedTask($id){
