@@ -64,7 +64,6 @@ class TaskController extends Controller
                 'request_id'=>$request->requestId,
                 'title'=>$request->task,
                 'description'=>$request->desc,
-                'status'=>'Open',
             ]);
             return redirect()->back()->with(['success'=>'Poprawnie dodano zadanie']);
         }catch (\Exception $e){
@@ -72,5 +71,5 @@ class TaskController extends Controller
         }
 
     }
-    //TODO wywalenie statusu i przepięcie go pod inny model
+
 }

@@ -14,7 +14,6 @@ class Task extends Model
         'request_id',
         'title',
         'description',
-        'status',
     ];
     public function taskInRequest(){
         return $this->belongsTo(taskInRequest::class , 'task_id');

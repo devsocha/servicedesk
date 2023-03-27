@@ -19,10 +19,8 @@ return new class extends Migration
             $table->timestamps();
         });
     }
- //TODO Dodanie zapisywania taskow poprzez tworzenie nowego formularza
-    //TODO mechanizm zmiany statusu
-    //TODO wyswietlania na bazie relacji w panelu technika
-    //TODOgu in future zakladka dla technika z jego zadaniami do wykonania (Przypisanie zadan do technika dodatkowo)
+
+    //TODO in future zakladka dla technika z jego zadaniami do wykonania (Przypisanie zadan do technika dodatkowo)
     /**
      * Reverse the migrations.
      */
