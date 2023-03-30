@@ -11,10 +11,23 @@ use Illuminate\Support\Facades\Mail;
 
 class AproveController extends Controller
 {
-    public function addNewAprover(){
+    public function addAprover(){
 
     }
-    public function sendMail($idUser,$idAprove){
+    public static function addNewAproverWhenReqeuestCreated($requestId, $aproverId){
+        try{
+            $aprove = Aprove::create([
+                'request_id'=>$requestId,
+                'aprover_id'=>$aproverId,
+                'status'=>'Waiting',
+                'token'=>'',
+            ]);
+            AproveController::sendMail($aproverId,$aprove->id);
+        }catch (\Exception $e){
+
+        }
+    }
+    public static function sendMail($idUser,$idAprove){
         $token = hash('sha256',time());
         try{
             Aprove::where('id',$idAprove)->update([

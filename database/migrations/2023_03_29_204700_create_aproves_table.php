@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('request_id');
             $table->bigInteger('aprover_id');
-            $table->string('token');
+            $table->string('token')->nullable();
             $table->string('status');
             $table->timestamps();
         });
