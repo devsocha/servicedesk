@@ -48,6 +48,47 @@
                 <table class="table ">
                     <thead>
                     <tr>
+                        <th scope="col">Imie i Nazwisko</th>
+                        <th scope="col">action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <form class="pt-4"action="#" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <tr>
+                            <input type="hidden" value="{{$form->id}}" name="requestId"/>
+                            <td>
+                                <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                                <datalist id="datalistOptions">
+                                    <option value="1">Konrad Socha</option>
+                                </datalist></td>
+                            <td>
+                                <input class="btn btn-secondary" value="Add aprover" type="submit"/>
+                            </td>
+                        </tr>
+                    </form>
+                    @if($tasks)
+                            <tr>
+                                <td>Konrad Socha</td>
+                                <td>
+                                    <a href="{{route('deleteTasks',['id'=>4])}}" class="btn btn-danger"  type="submit">Delete aprover</a>
+                                </td>
+                            </tr>
+
+                    @endif
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </center>
+    <center>
+
+        <div class="containter text-center shadow mt-5" style="width:1000px">
+            <div class="p-4">
+                <table class="table ">
+                    <thead>
+                    <tr>
                         <th scope="col">Task</th>
                         <th scope="col">Description</th>
                         <th scope="col">action</th>
