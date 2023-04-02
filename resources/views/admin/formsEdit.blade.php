@@ -53,12 +53,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <form class="pt-4"action="#" method="post" enctype="multipart/form-data">
+                    <form class="pt-4"action="{{route('addAprover')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <tr>
                             <input type="hidden" value="{{$form->id}}" name="requestId"/>
                             <td>
-                                <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                                <input class="form-control" name="id" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
                                 <datalist id="datalistOptions">
                                     @foreach($users as $user)
                                         <option value="{{$user->id}}">{{$user->imie}} {{$user->nazwisko}}</option>
@@ -75,7 +75,7 @@
                             <tr>
                                 <td>{{$form->user->imie}} {{$form->user->nazwisko}}</td>
                                 <td>
-                                    <a href="{{route('deleteAprover',['id'=>$form->user->id])}}" class="btn btn-danger"  type="submit">Delete aprover</a>
+                                    <a href="{{route('deleteAprover',['id'=>$form->user->id, 'form'=>$form->id])}}" class="btn btn-danger"  type="submit">Delete aprover</a>
                                 </td>
                             </tr>
                     @endif

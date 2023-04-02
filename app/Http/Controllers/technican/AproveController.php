@@ -5,14 +5,18 @@ namespace App\Http\Controllers\technican;
 use App\Http\Controllers\Controller;
 use App\Mail\WebsiteEmail;
 use App\Models\Aprove;
+use App\Models\Form;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class AproveController extends Controller
 {
-    public function addAprover(){
-
+    public static function addAprover(Request $request){
+        Form::where('id',$request->requestId)->update([
+            'aprover'=>$request->id,
+        ]);
+        return redirect()->back();
     }
     public static function addNewAproverWhenReqeuestCreated($requestId, $aproverId){
         try{
