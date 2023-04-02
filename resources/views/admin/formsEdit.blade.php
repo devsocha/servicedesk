@@ -67,14 +67,13 @@
                             </td>
                         </tr>
                     </form>
-                    @if($tasks)
+                    @if($aprover)
                             <tr>
-                                <td>Konrad Socha</td>
+                                <td>{{$aprover->user->imie}} {{$aprover->user->nazwisko}}</td>
                                 <td>
-                                    <a href="{{route('deleteTasks',['id'=>4])}}" class="btn btn-danger"  type="submit">Delete aprover</a>
+                                    <a href="{{route('deleteAprover',['id'=>$aprover->user->id])}}" class="btn btn-danger"  type="submit">Delete aprover</a>
                                 </td>
                             </tr>
-
                     @endif
                     </tbody>
                 </table>
