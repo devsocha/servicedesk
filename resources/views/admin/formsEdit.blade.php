@@ -60,18 +60,22 @@
                             <td>
                                 <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
                                 <datalist id="datalistOptions">
-                                    <option value="1">Konrad Socha</option>
+                                    @foreach($users as $user)
+                                        <option value="{{$user->id}}">{{$user->imie}} {{$user->nazwisko}}</option>
+                                    @endforeach
+
                                 </datalist></td>
                             <td>
                                 <input class="btn btn-secondary" value="Add aprover" type="submit"/>
                             </td>
                         </tr>
                     </form>
-                    @if($aprover)
+
+                    @if($form->aprover)
                             <tr>
-                                <td>{{$aprover->user->imie}} {{$aprover->user->nazwisko}}</td>
+                                <td>{{$form->user->imie}} {{$form->user->nazwisko}}</td>
                                 <td>
-                                    <a href="{{route('deleteAprover',['id'=>$aprover->user->id])}}" class="btn btn-danger"  type="submit">Delete aprover</a>
+                                    <a href="{{route('deleteAprover',['id'=>$form->user->id])}}" class="btn btn-danger"  type="submit">Delete aprover</a>
                                 </td>
                             </tr>
                     @endif

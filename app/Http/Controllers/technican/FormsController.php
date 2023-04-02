@@ -5,6 +5,7 @@ namespace App\Http\Controllers\technican;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Form;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FormsController extends Controller
@@ -76,9 +77,11 @@ class FormsController extends Controller
     public function edit($id){
         $form = Form::where('id',$id)->first();
         $tasks = TaskController::getTaskInOptions($id);
+        $users = User::all();
         return view('admin.formsEdit',[
             'form'=>$form,
             'tasks'=>$tasks,
+            'users'=>$users,
         ]);
     }
 

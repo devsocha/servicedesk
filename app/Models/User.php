@@ -32,6 +32,9 @@ class User extends Authenticatable
     public function Requests(){
         return $this->hasOne(Request::class,'id_technik','id');
     }
+    public function form(){
+        return $this->belongsTo(Form::class,'aprover');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
