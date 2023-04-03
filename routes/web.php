@@ -108,5 +108,5 @@ Route::get('technican/admin/forms/tasks/delete/{id}',[\App\Http\Controllers\tech
 ])->middleware('auth','tech','headtech')->name('deleteTasks');
 Route::post('technician/admin/forms/aprover/add',[\App\Http\Controllers\technican\AproveController::class,'addAprover'
 ])->middleware('auth','tech','headtech')->name('addAprover');
-Route::get('technician/admin/forms/aprover/delete/{id}',[\App\Http\Controllers\technican\AproveController::class,'deleteAprover'
+Route::get('technician/admin/forms/aprover/delete/{form}',[\App\Http\Controllers\technican\AproveController::class,'deleteAprover'
 ])->middleware('auth','tech','headtech')->name('deleteAprover');

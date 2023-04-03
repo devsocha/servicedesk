@@ -75,7 +75,7 @@
                             <tr>
                                 <td>{{$form->user->imie}} {{$form->user->nazwisko}}</td>
                                 <td>
-                                    <a href="{{route('deleteAprover',['id'=>$form->user->id, 'form'=>$form->id])}}" class="btn btn-danger"  type="submit">Delete aprover</a>
+                                    <a href="{{route('deleteAprover',['form'=>$form->id])}}" class="btn btn-danger"  type="submit">Delete aprover</a>
                                 </td>
                             </tr>
                     @endif

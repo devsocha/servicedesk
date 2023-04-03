@@ -31,6 +31,12 @@ class AproveController extends Controller
 
         }
     }
+    public function deleteAprover($requestId){
+        Form::where('id',$requestId)->update([
+            'aprover'=> null,
+        ]);
+        return redirect()->back();
+    }
     public static function sendMail($idUser,$idAprove){
         $token = hash('sha256',time());
         try{
