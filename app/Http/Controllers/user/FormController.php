@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\technican\AproveController;
 use App\Http\Controllers\technican\TaskController;
 use App\Models\Form;
 use Illuminate\Http\Request;
@@ -33,6 +34,7 @@ class FormController extends Controller
                     'id_user'=>$request->id_user,
                     'form_id'=>$request->idForm,
                 ]);
+                AproveController::addNewAproverWhenReqeuestCreated($requests->id,$request->idForm);
                 TaskController::addTaksToRequest($request->idForm,$requests->id);
             }else{
                 $requests = \App\Models\Request::create([
@@ -41,6 +43,7 @@ class FormController extends Controller
                     'id_user'=>$request->id_user,
                     'form_id'=>$request->idForm,
                 ]);
+                AproveController::addNewAproverWhenReqeuestCreated($requests->id,$request->idForm);
                 TaskController::addTaksToRequest($request->idForm,$requests->id);
 
             }

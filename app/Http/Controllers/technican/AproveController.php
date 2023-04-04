@@ -18,15 +18,26 @@ class AproveController extends Controller
         ]);
         return redirect()->back();
     }
-    public static function addNewAproverWhenReqeuestCreated($requestId, $aproverId){
+    public static function addNewAproverWhenReqeuestCreated($requestId, $idForm){
         try{
-            $aprove = Aprove::create([
-                'request_id'=>$requestId,
-                'aprover_id'=>$aproverId,
-                'status'=>'Waiting',
-                'token'=>'',
-            ]);
-            AproveController::sendMail($aproverId,$aprove->id);
+            $form = Form::where('id',$idForm)->first();
+            $aproverId = $form->aprover;
+            if($aproverId){
+                $aprove = Aprove::create([
+                    'request_id'=>$requestId,
+                    'aprover_id'=>$aproverId,
+                    'status'=>'Waiting',
+                    'token'=>'',
+                ]);
+                $requestUpdated = \App\Models\Request::where('id',$requestId)->update([
+                    'aprove_id'=>$aprove->id,
+                ]);
+                AproveController::sendMail($aproverId,$aprove->id);
+                return;
+            }else{
+                return;
+            }
+
         }catch (\Exception $e){
 
         }
