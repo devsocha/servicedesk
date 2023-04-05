@@ -118,5 +118,12 @@ class TechnicanController extends Controller
         }
 
     }
+    public function viewFromLinkToAprove($idAprove, $token){
+        $aprove = AproveController::getAprove($idAprove);
+        return view('general.aprove')->with([
+            'aprove'=>$aprove,
+            'token'=>$token,
+        ]);
+    }
 
 }

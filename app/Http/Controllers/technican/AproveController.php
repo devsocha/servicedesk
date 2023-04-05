@@ -42,6 +42,12 @@ class AproveController extends Controller
 
         }
     }
+
+    public static function getAprove($idAprove)
+    {
+        return Aprove::where('id',$idAprove)->first();
+    }
+
     public function deleteAprover($requestId){
         Form::where('id',$requestId)->update([
             'aprover'=> null,

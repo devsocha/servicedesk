@@ -110,3 +110,5 @@ Route::post('technician/admin/forms/aprover/add',[\App\Http\Controllers\technica
 ])->middleware('auth','tech','headtech')->name('addAprover');
 Route::get('technician/admin/forms/aprover/delete/{form}',[\App\Http\Controllers\technican\AproveController::class,'deleteAprover'
 ])->middleware('auth','tech','headtech')->name('deleteAprover');
+Route::get('aprove/request/{idAprover}/{token}',[\App\Http\Controllers\technican\TechnicanController::class,'viewFromLinkToAprove'
+])->name('aproveFromMail');
