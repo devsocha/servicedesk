@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-/* Login */
+/* Login & Logout*/
 Route::get('login',[\App\Http\Controllers\user\CredentialController::class,'login'])->name('login')->middleware('unauth');
 Route::post('login/submit',[\App\Http\Controllers\user\CredentialController::class,'loginSubmit'])->name('loginSubmit');
 Route::get('logout',[\App\Http\Controllers\user\CredentialController::class,'logout'])->name('logout');
@@ -72,6 +72,7 @@ Route::get('task/completed/{id}',[\App\Http\Controllers\technican\TaskController
 Route::get('task/open/{id}',[\App\Http\Controllers\technican\TaskController::class,'returnTask'
 ])->name('taskOpen')->middleware('auth','tech');
 /* Head Technican */
+
 Route::get('settings/admin',[\App\Http\Controllers\technican\TechnicanController::class,'admin'
 ])->name('technican.settings')->middleware('auth','tech','headtech');
 Route::get('settings/admin/technican',[\App\Http\Controllers\technican\TechnicanController::class,'adminSettings'
