@@ -121,10 +121,12 @@ class TechnicanController extends Controller
     public function viewFromLinkToAprove($idAprove, $token){
         $aprove = AproveController::getAprove($idAprove);
         $form = \App\Models\Request::where('id',$aprove->request_id)->first();
+        $technician = User::where('id',$form->id_technik)->first();
         return view('general.aprove')->with([
             'aprove'=>$aprove,
             'token'=>$token,
             'form'=>$form,
+            'technician'=>$technician,
         ]);
     }
 

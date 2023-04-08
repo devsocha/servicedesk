@@ -69,4 +69,10 @@ class AproveController extends Controller
 
         }
     }
+    public static function acceptRequestAprove($id){
+        Aprove::where('request_id',$id)->udpate([
+            'status'=>'Accepted',
+        ]);
+        return response();
+    }
 }

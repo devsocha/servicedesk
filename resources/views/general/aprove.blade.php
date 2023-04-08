@@ -18,8 +18,10 @@
             <div class="containter shadow mt-5" style="width:1000px;padding-bottom: 50px;">
                 <div class="row p-4">
                     <div class="col-10"></div>
+                    @if($aprove->status !== 'Waiting') <div class="col-1">{{$aprove->status}}</div>@else
                     <div class="col-1"><a class="btn btn-success" href="{{route('requests')}}">Accept</a></div>
                     <div class="col-1"><a class="btn btn-danger" href="{{route('requests')}}">Reject</a></div>
+                    @endif
                 </div>
                 <div class="row p-4">
 
@@ -28,7 +30,7 @@
                 </div>
                 <div class="row p-4 text-center">
                     <div class="col-3"style="text-align:right;"><label> Technican: </label>  </div>
-                    <div class="col-3"style="text-align:justify;"><input type="text" value="@if($form->id_technik!=0) {{$technican->imie}} {{$technican->nazwisko}}@else Brak @endif" disabled></div>
+                    <div class="col-3"style="text-align:justify;"><input type="text" value="@if($form->id_technik!=0) {{$technician->imie}} {{$technician->nazwisko}}@else Brak @endif" disabled></div>
                     <div class="col-1" style="text-align:right;"><label> Status: </label></div>
                     <div class="col-5" style="text-align:justify;"> <input type="text" value="{{$form->status}}" disabled></div>
                 </div>
